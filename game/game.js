@@ -1,22 +1,22 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {GLTFLoader} from 'three/addons';
 import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
+import {loadModel} from './loader.js';
 
 
 // Scene setup
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-var renderer = new THREE.WebGLRenderer({canvas: myCanvas, alpha: true});
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas: myCanvas, alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Add a white directional light
-var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5).normalize();
 scene.add(directionalLight);
 
 // Add an ambient light for softer shadows
-var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 // Position the camera
@@ -34,194 +34,41 @@ const targetPosition = new THREE.Vector3(0, 0, 0); // Focus at Y = 10
 controls.target.copy(targetPosition);
 camera.lookAt(targetPosition);
 
+// Chargement des modèles
+loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
+    position: [0, 1.05, -1]
+}, scene);
 
-// Skeleton
-const loaderSkeleton = new GLTFLoader().setPath('../public/modelsAndTextures/Skeleton/');
-loaderSkeleton.load(
-    'scene.gltf',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
+loadModel('../public/modelsAndTextures/', 'heart.glb', {
+    position: [0, 7, -0.8],
+    scale: [0.5, 0.5, 0.5]
+}, scene);
 
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
+loadModel('../public/modelsAndTextures/', 'lung.glb', {
+    position: [-0.15, 7, 0.5],
+    scale: [1.75, 1.75, 1.75]
+}, scene);
 
-        mesh.position.set(0, 1.05, -1);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
+loadModel('../public/modelsAndTextures/', 'brain.glb', {
+    position: [0, 10.3, -1.5],
+    scale: [1.25, 1.25, 1.25]
+}, scene);
 
-// Heart
+loadModel('../public/modelsAndTextures/', 'stomach.glb', {
+    position: [0.5, 6, -0.75],
+    scale: [0.15, 0.15, 0.15]
+}, scene);
 
-const loaderHeart = new GLTFLoader().setPath('../public/modelsAndTextures/');
-loaderHeart.load(
-    'heart.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
+loadModel('../public/modelsAndTextures/', 'kidney.glb', {
+    position: [-0.75, 5, -0.75],
+    scale: [0.16, 0.16, 0.16]
+}, scene);
 
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(0, 7, -0.8);
-        mesh.scale.set(0.5, 0.5, 0.5);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
-
-const loaderLung = new GLTFLoader().setPath('../public/modelsAndTextures/');
-loaderLung.load(
-    'lung.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
-
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(-0.15, 7, 0.5);
-        mesh.scale.set(1.75, 1.75, 1.75);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
-
-const loaderBrain = new GLTFLoader().setPath('../public/modelsAndTextures/');
-loaderBrain.load(
-    'brain.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
-
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(0, 10.3, -1.5);
-        mesh.scale.set(1.25, 1.25, 1.25);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
-
-const loaderStomach = new GLTFLoader().setPath('../public/modelsAndTextures/');
-
-loaderStomach.load(
-    'stomach.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
-
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(0.5, 6, -0.75);
-        mesh.scale.set(0.15, 0.15, 0.15);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
-
-const loaderKidney = new GLTFLoader().setPath('../public/modelsAndTextures/');
-
-loaderKidney.load(
-    'kidney.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
-
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(-0.75, 5, -0.75);
-        mesh.scale.set(0.16, 0.16, 0.16);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
-
-const loaderLiver = new GLTFLoader().setPath('../public/modelsAndTextures/');
-
-loaderLiver.load(
-    'liver.glb',
-    (gltf) => {
-        console.log('loading model');
-        const mesh = gltf.scene;
-
-        mesh.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
-        mesh.position.set(-0.5, 6, -0.75);
-        mesh.scale.set(5, 5, 5);
-        mesh.rotation.set(0, -90, 0);
-        scene.add(mesh);
-    },
-    (xhr) => {
-        console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
+loadModel('../public/modelsAndTextures/', 'liver.glb', {
+    position: [-0.5, 6, -0.75],
+    scale: [5, 5, 5],
+    rotation: [0, -Math.PI / 2, 0]
+},scene);
 
 // Animation loop
 function animate() {
