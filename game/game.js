@@ -1,13 +1,12 @@
 import * as THREE from 'three';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
-import {loadModel} from './loader.js';
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { loadModel } from './loader.js';
 
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas: myCanvas, alpha: true});
+const renderer = new THREE.WebGLRenderer({ canvas: myCanvas, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Add a white directional light
@@ -23,7 +22,7 @@ scene.add(ambientLight);
 camera.position.z = 20;
 camera.position.y = 10;
 
-// // Add OrbitControls for interaction
+// Add OrbitControls for interaction
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
@@ -34,10 +33,13 @@ const targetPosition = new THREE.Vector3(0, 0, 0); // Focus at Y = 10
 controls.target.copy(targetPosition);
 camera.lookAt(targetPosition);
 
-// Chargement des modèles
+// Load models
+let skeletonMesh = null;
 loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
-}, scene);
+}, scene, (mesh) => {
+    skeletonMesh = mesh;
+});
 
 loadModel('../public/modelsAndTextures/', 'heart.glb', {
     position: [0, 7, -0.8],
@@ -68,7 +70,21 @@ loadModel('../public/modelsAndTextures/', 'liver.glb', {
     position: [-0.5, 6, -0.75],
     scale: [5, 5, 5],
     rotation: [0, -Math.PI / 2, 0]
-},scene);
+}, scene);
+
+// Add a GUI
+const gui = new GUI({ name: 'My GUI' });
+const params = {
+    toggleSkeletonVisibility: () => {
+        const object = scene.getObjectByProperty("uuid","scene.gltf");
+        console.log(object);
+        object.visible = !object.visible;
+    }
+};
+
+const folder = gui.addFolder('Skeleton Controls');
+folder.add(params, 'toggleSkeletonVisibility').name('Toggle Skeleton Visibility');
+folder.open();
 
 // Animation loop
 function animate() {
@@ -84,4 +100,3 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 animate();
-

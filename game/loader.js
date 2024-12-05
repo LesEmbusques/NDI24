@@ -19,7 +19,10 @@ export const loadModel = (path, fileName, { position = [0, 0, 0], scale = [1, 1,
             mesh.position.set(...position);
             mesh.scale.set(...scale);
             mesh.rotation.set(...rotation);
+            mesh.uuid = fileName;
+            mesh.visible = true;
             scene.add(mesh);
+
         },
         (xhr) => {
             console.log(`Loading ${fileName}: ${(xhr.loaded / xhr.total) * 100}%`);
