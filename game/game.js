@@ -34,36 +34,36 @@ camera.lookAt(targetPosition);
 
 // Load models
 let skeletonMesh = null;
-loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
+loadModel('../modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'heart.glb', {
+loadModel('../modelsAndTextures/', 'heart.glb', {
     position: [0, 7, -0.8],
     scale: [0.5, 0.5, 0.5]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'lung.glb', {
+loadModel('../modelsAndTextures/', 'lung.glb', {
     position: [-0.15, 7, 0.5],
     scale: [1.75, 1.75, 1.75]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'brain.glb', {
+loadModel('../modelsAndTextures/', 'brain.glb', {
     position: [0, 10.3, -1.2],
     scale: [1.2, 1.2, 1.2]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'stomach.glb', {
+loadModel('../modelsAndTextures/', 'stomach.glb', {
     position: [0.5, 6, -0.75],
     scale: [0.15, 0.15, 0.15]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'kidney.glb', {
+loadModel('../modelsAndTextures/', 'kidney.glb', {
     position: [-0.75, 5, -0.75],
     scale: [0.16, 0.16, 0.16]
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'liver.glb', {
+loadModel('../modelsAndTextures/', 'liver.glb', {
     position: [-0.5, 6, -0.75],
     scale: [5, 5, 5],
     rotation: [0, -Math.PI / 2, 0]
