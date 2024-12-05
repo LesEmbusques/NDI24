@@ -3,20 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>Game</title>
-    <style>* {
-        margin: 0;
-        padding: 0;
-    }
-
-    canvas {
-        width: 100% !important;
-        height: 100% !important;
-        cursor: grab;
-    }
-    </style>
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
-<script type="module" src="game.js"></script>
-<canvas id="myCanvas"></canvas>
+<div id="app">
+    <script type="module" src="game.js"></script>
+    <div id="header">
+        <a href="https://example.com" class="link">Start</a>
+        <a href="https://example.com" class="link">About</a>
+        <a href="https://example.com" class="link">Contact</a>
+    </div>
+    <div id="block">
+        <p id="score">
+    Participez à la Nuit de l'Info 2024 avec une expérience éducative immersive et unique, vous plongeant dans un univers interactif en 3D.<br><br>
+    À travers un voyage fascinant au cœur du corps humain, chaque organe devient un terrain de jeu où des mini-jeux éducatifs vous attendent. Ces jeux se débloquent petit à petit, offrant ainsi une expérience de découverte progressive, dynamique et engageante.<br><br>
+
+    Chaque organe trouve un écho dans les mécanismes complexes de l'océan. À l’image des systèmes biologiques, les éléments marins se connectent à ces organes, permettant aux joueurs de comprendre les interactions étonnantes et complémentaires entre la nature et le corps humain.<br><br>
+
+    Ce projet a pour but de sensibiliser, d'informer et de divertir, tout en explorant de manière ludique les liens profonds entre le corps humain et son environnement naturel. Une manière innovante et amusante d'apprendre lors de cette Nuit de l'Info 2024.
+</p>
+
+        <button id="skeletonButton">Cacher le squelette</button>
+    </div>
+    <canvas id="myCanvas"></canvas>
+</div>
 </body>
 </html>

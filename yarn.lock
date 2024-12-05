@@ -1037,6 +1037,11 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+three-css3drenderer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/three-css3drenderer/-/three-css3drenderer-1.0.1.tgz#6cdd07b1387d300325435f6ddeaf79e767b467c0"
+  integrity sha512-yKjJMjtxNrkF3Ch4c4q15Vt+Xd48s5ckbJvJR98C/JrT82b8xUtjpbqL2E9Yotg0mC6ilMzZmvX34li2JRNw3Q==
+
 three-mesh-ui@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/three-mesh-ui/-/three-mesh-ui-6.5.4.tgz#68f0a5aba4dced0ed168d2574f45d93b55f4fd03"

@@ -1,12 +1,12 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-import { loadModel } from './loader.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
+import {loadModel} from './loader.js';
 
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: myCanvas, alpha: true });
+const renderer = new THREE.WebGLRenderer({canvas: myCanvas, alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Add a white directional light
@@ -72,19 +72,12 @@ loadModel('../public/modelsAndTextures/', 'liver.glb', {
     rotation: [0, -Math.PI / 2, 0]
 }, scene);
 
-// Add a GUI
-const gui = new GUI({ name: 'My GUI' });
-const params = {
-    toggleSkeletonVisibility: () => {
-        const object = scene.getObjectByProperty("uuid","scene.gltf");
-        console.log(object);
-        object.visible = !object.visible;
-    }
-};
 
-const folder = gui.addFolder('Skeleton Controls');
-folder.add(params, 'toggleSkeletonVisibility').name('Toggle Skeleton Visibility');
-folder.open();
+document.getElementById('skeletonButton').addEventListener('click', (event) => {
+    const object = scene.getObjectByProperty("uuid", "scene.gltf");
+    console.log(object);
+    object.visible = !object.visible;
+});
 
 // Animation loop
 function animate() {
