@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Game</title>
-		<style>
-			body { margin: 0; width: 100vw;height: 100vh }
-		</style>
-	</head>
-	<body>
-		<script type="module" src="game.js"></script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <style>* {
+        margin: 0;
+        padding: 0;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    </style>
+</head>
+<body>
+<script type="module" src="game.js"></script>
+<canvas id="myCanvas"></canvas>
+</body>
 </html>
