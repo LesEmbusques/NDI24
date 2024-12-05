@@ -49,8 +49,8 @@ loadModel('../public/modelsAndTextures/', 'lung.glb', {
 }, scene);
 
 loadModel('../public/modelsAndTextures/', 'brain.glb', {
-    position: [0, 10.3, -1.5],
-    scale: [1.25, 1.25, 1.25]
+    position: [0, 10.3, -1.2],
+    scale: [1.2, 1.2, 1.2]
 }, scene);
 
 loadModel('../public/modelsAndTextures/', 'stomach.glb', {
