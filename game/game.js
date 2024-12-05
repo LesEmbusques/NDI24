@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
 import {loadModel} from './loader.js';
 
 // Scene setup
@@ -19,7 +18,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 // Position the camera
-camera.position.z = 20;
+camera.position.z = 7;
 camera.position.y = 10;
 
 // Add OrbitControls for interaction
@@ -29,7 +28,7 @@ controls.dampingFactor = 0.05;
 controls.zoomToCursor = true;
 
 // Set the focus of the camera to a higher Y position
-const targetPosition = new THREE.Vector3(0, 0, 0); // Focus at Y = 10
+const targetPosition = new THREE.Vector3(0, 7, 0); // Focus at Y = 10
 controls.target.copy(targetPosition);
 camera.lookAt(targetPosition);
 
@@ -37,9 +36,7 @@ camera.lookAt(targetPosition);
 let skeletonMesh = null;
 loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
-}, scene, (mesh) => {
-    skeletonMesh = mesh;
-});
+}, scene);
 
 loadModel('../public/modelsAndTextures/', 'heart.glb', {
     position: [0, 7, -0.8],
