@@ -10,6 +10,7 @@ export default defineConfig({
       input:{
         main: 'index.html',
         earth: 'earth.html',
+        earthApp: 'src/app/pages/app.php',
       }
     }
   },
