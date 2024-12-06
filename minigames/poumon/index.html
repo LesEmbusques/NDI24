@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-jeu Photosynthèse</title>
+    <title>Échanges gazeux</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="game-container">
-    <h1>Mini-jeu : Échanges gazeux</h1>
-    <div class="scoreboard">
-        <div>CO₂ absorbé : <span id="co2-count">0</span></div>
-        <div>O₂ produit : <span id="o2-count">0</span></div>
-        <div>Temps restant : <span id="timer">30</span> s</div>
-    </div>
-    <div id="play-area"></div>
-</div>
+    <header>
+        <h1>Mini-jeu : Échanges gazeux</h1>
+    </header>
 
-<div id="end-screen" class="hidden">
-    <h2>Temps écoulé !</h2>
-    <p>Vous avez absorbé <span id="final-co2">0</span> CO₂ et produit <span id="final-o2">0</span> O₂.</p>
-    <button id="restart-button">Rejouer</button>
-</div>
+    <main>
+        <div id="introScreen">
+            <h2>Votre mission :</h2>
+            <p>Participez aux échanges gazeux présent dans l'océan.</p>
+            <button id="startButton">Commencer</button>
+        </div>
 
-<script src="script.js"></script>
+        <section id="gameSection">
+            <div id="infoBar" class="hidden">
+                <p>CO₂ absorbé : <span id="co2-count">0</span></p>
+                <p>O₂ produit : <span id="o2-count">0</span></p>
+                <p>Temps restant : <span id="timer">30</span> s</p>
+            </div>
+            <div id="playArea" class="hidden"></div>
+        </section>
+
+        <section id="gameOver" class="hidden">
+            <h2>Temps écoulé !</h2>
+            <p>Tout comme tes poumons, l'océan participe au cycle des gaz essentiels à la vie.</p>
+            <p>Tu as absorbé <span id="final-co2">0</span> molécules de dioxyde de carbone et produit <span id="final-o2">0</span> molécules de dioxygène.</p>
+            <p>Ces chiffres s'expliquent car les océans produisent plus de 50% de l'oxygène terrestre grâce au phytoplancton. De plus, l'océan absorbe 25% de toutes les emissions de dioxyde de carbone.</p>
+            <button id="restartButton">Rejouer</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Échanges gazeux</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
