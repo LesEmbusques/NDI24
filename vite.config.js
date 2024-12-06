@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   base: '/NDI24.github.io/', // Utiliser des chemins relatifs pour la production
+  assetsInclude: ['**/*.png'],
   build: {
     outDir: 'dist', // Dossier de sortie pour la production
     target: 'esnext', // Assurer la compatibilité avec les navigateurs modernes
@@ -16,7 +17,12 @@ export default defineConfig({
         foie: resolve(__dirname,'minigames/foie/index.html'),
         estomac: resolve(__dirname,'minigames/estomac/index.html'),
         rein: resolve(__dirname,'minigames/rein/index.html'),
-      }
+      },
+        output: {
+          cerveau: {
+            assets: 'minigames/cerveau/assets',
+          },
+        },
     }
   },
   resolve: {
