@@ -9,7 +9,8 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: myCanvas, alpha: true });
-const rendererDiv = document.getElementById('myCanvas');
+const skeletonButton = document.getElementById('skeletonButton');
+const popups = document.getElementById('popups');
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -41,10 +42,11 @@ camera.lookAt(targetPosition);
 // Load models
 loadModels();
 
-document.getElementById('skeletonButton').addEventListener('click', (event) => {
+skeletonButton.addEventListener('click', (event) => {
     const object = scene.getObjectByProperty("uuid", "scene.gltf");
     console.log(object);
     object.visible = !object.visible;
+    skeletonButton.innerText = object.visible ? "Cacher le squelette" : "Afficher le squelette";
 });
 
 renderer.domElement.addEventListener('mousemove', onMouseMove, false);
@@ -76,6 +78,16 @@ var hoveredObject = null;
 var updatePointer = () => {
     document.getElementById('myCanvas').style.cursor = hoveredObject ? 'pointer' : 'auto';
 }
+
+function closePopups() {
+    popups.querySelectorAll(".active").forEach((popup) => {
+        popup.classList.remove('active');
+    });
+}
+
+popups.querySelectorAll('.close').forEach((closeButton) => {
+    closeButton.addEventListener('click', closePopups);
+});
 
 function onMouseMove(event) {
     // Mettre à jour les coordonnées de la souris
@@ -128,8 +140,10 @@ function onClick(event) {
         const object = intersects[0].object;
 
         // Si l'objet a un lien défini, rediriger
-        if (object.userData.hoverable && object.userData.link) {
-            window.open(object.userData.link, '_blank'); // Ouvre le lien dans un nouvel onglet
+        if (object.userData.hoverable && object.userData.name) {
+            closePopups();
+            var popup = popups.querySelector('.popup[data-popup="' + object.userData.name + '"]');
+            popup.classList.add('active');
         }
     }
 }
@@ -158,22 +172,24 @@ animate();
 
 function loadModels() {
     loadModel('../modelsAndTextures/Skeleton/', 'scene.gltf', {
-        position: [0, 1.05, -1]
+        position: [0, 1.05, -1],
+        hoverable: false,
+        name: "skeleton" 
     }, scene);
     
     loadModel('../modelsAndTextures/', 'heart.glb', {
         position: [0, 7, -0.8],
         scale: [0.5, 0.5, 0.5],
-        hoverable: true,   // Indique si l'objet est interactif
-        link: "https://example.com/heart" // Lien à ouvrir lors du clic
+        hoverable: true,
+        name: "heart" 
     }, scene);
     
     if (localStorage.getItem("lungs")) {
         loadModel('../modelsAndTextures/', 'lung.glb', {
             position: [-0.15, 7, 0.5],
             scale: [1.75, 1.75, 1.75],
-            hoverable: true,   // Indique si l'objet est interactif
-            link: "https://example.com/lung" // Lien à ouvrir lors du clic
+            hoverable: true,
+            name: "lungs" 
         }, scene);
     }
     
@@ -181,8 +197,8 @@ function loadModels() {
         loadModel('../public/modelsAndTextures/', 'brain.glb', {
             position: [0, 10.3, -1.2],
             scale: [1.2, 1.2, 1.2],
-            hoverable: true,   // Indique si l'objet est interactif
-            link: "https://example.com/brain" // Lien à ouvrir lors du clic
+            hoverable: true,
+            name: "brain" 
         }, scene);
     }
     
@@ -190,8 +206,8 @@ function loadModels() {
         loadModel('../modelsAndTextures/', 'stomach.glb', {
             position: [0.5, 6, -0.75],
             scale: [0.15, 0.15, 0.15],
-            hoverable: true,   // Indique si l'objet est interactif
-            link: "https://example.com/stomach" // Lien à ouvrir lors du clic
+            hoverable: true,
+            name: "stomach" 
         }, scene);
     }
     
@@ -199,8 +215,8 @@ function loadModels() {
         loadModel('../modelsAndTextures/', 'kidney.glb', {
             position: [-0.75, 5, -0.75],
             scale: [0.16, 0.16, 0.16],
-            hoverable: true,   // Indique si l'objet est interactif
-            link: "https://example.com/kidney" // Lien à ouvrir lors du clic
+            hoverable: true,
+            name: "kidney" 
         }, scene);
     }
     
@@ -209,8 +225,8 @@ function loadModels() {
             position: [-0.5, 6, -0.75],
             scale: [5, 5, 5],
             rotation: [0, -Math.PI / 2, 0],
-            hoverable: true,   // Indique si l'objet est interactif
-            link: "https://example.com/liver" // Lien à ouvrir lors du clic
+            hoverable: true,
+            name: "liver"
         }, scene);
     }
 }
