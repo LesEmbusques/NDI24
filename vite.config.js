@@ -6,6 +6,12 @@ export default defineConfig({
     outDir: 'dist', // Dossier de sortie pour la production
     target: 'esnext', // Assurer la compatibilité avec les navigateurs modernes
     assetsInlineLimit: 0, // Désactiver l'inlining des assets trop grands
+    rollupOptions: {
+      input:{
+        main: 'index.html',
+        earth: 'earth.html',
+      }
+    }
   },
   resolve: {
     alias: {
