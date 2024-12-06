@@ -1,30 +1,49 @@
-name: Deploy Three.js App
+name: Deploy
 
 on:
   push:
     branches:
-      - main # Déclencher lors de pushs sur la branche "main"
+      - main
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Vérifiez le code
-      - name: Checkout Code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2. Installez Node.js
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
 
-      # 3. Installez les dépendances
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
 
-      # 4. Construisez l'application
-      - name: Build App
+      - name: Build project
         run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
