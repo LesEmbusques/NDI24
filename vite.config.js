@@ -20,7 +20,7 @@ export default defineConfig({
       },
         output: {
           cerveau: {
-            assets: 'minigames/cerveau/assets',
+            assets: 'minigames/cerveau/assets/wall.png',
           },
         },
     }
