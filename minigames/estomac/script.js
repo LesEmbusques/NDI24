@@ -26,10 +26,10 @@ let pollutantsCollected = 0; // Nombre de polluants collectés pour changer de n
 
 // Images pour les assets
 const nutrientImage = new Image();
-nutrientImage.src = "assets/nutrient.png";
+nutrientImage.src = "./assets/nutrient.png";
 
 const pollutantImage = new Image();
-pollutantImage.src = "assets/pollutant.png";
+pollutantImage.src = "./assets/pollutant.png";
 
 const waterLine = canvas.height / 2; // Ligne représentant la surface de l'eau
 
