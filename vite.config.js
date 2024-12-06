@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   base: '/NDI24.github.io/', // Utiliser des chemins relatifs pour la production
@@ -9,12 +10,12 @@ export default defineConfig({
     rollupOptions: {
       input:{
         main: 'index.html',
-        cerveau: './minigames/cerveau/index.html',
-        coeur: './minigames/coeur/index.html',
-        poumons: './minigames/poumons/index.html',
-        foie: './minigames/foie/index.html',
-        estomac: './minigames/estomac/index.html',
-        rein: './minigames/rein/index.html',
+        cerveau: resolve(__dirname,'./minigames/cerveau/index.html'),
+        coeur: resolve(__dirname,'./minigames/coeur/index.html'),
+        poumons: resolve(__dirname,'./minigames/poumons/index.html'),
+        foie: resolve(__dirname,'./minigames/foie/index.html'),
+        estomac: resolve(__dirname,'./minigames/estomac/index.html'),
+        rein: resolve(__dirname,'./minigames/rein/index.html'),
       }
     }
   },
