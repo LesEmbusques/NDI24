@@ -25,9 +25,9 @@ let gameRunning = false;
 
 // Images pour les assets
 const debrisImage = new Image();
-debrisImage.src = "assets/debris.png";
+debrisImage.src = "./assets/debris.png";
 const reefImage = new Image();
-reefImage.src = "assets/reef.png";
+reefImage.src = "./assets/reef.png";
 
 // Niveaux
 const levels = [

@@ -17,10 +17,10 @@ const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
 
 const toxinImage = new Image();
-toxinImage.src = "assets/toxin.png"; // Image pour toxines
+toxinImage.src = "./assets/toxin.png"; // Image pour toxines
 
 const nutrientImage = new Image();
-nutrientImage.src = "assets/nutrient.png"; // Image pour nutriments
+nutrientImage.src = "./assets/nutrient.png"; // Image pour nutriments
 
 canvas.width = 600;
 canvas.height = 400;
