@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défense du Corail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Défense du Corail</h1>
+        <p>Protégez votre récif contre les menaces marines !</p>
+    </header>
+
+    <main>
+        <div id="infoBar" class="hidden">
+            <p>Niveau : <span id="currentLevel">1</span></p>
+            <p>Points : <span id="score">0</span></p>
+        </div>
+
+        <div id="gameArea">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div id="introScreen">
+            <h2>Votre mission :</h2>
+            <p>Protégez votre récif de corail en détruisant les menaces marines avec vos bulles d'eau.</p>
+            <button id="startButton">Commencer</button>
+        </div>
+
+        <div id="gameOver" class="hidden">
+            <h2 id="result">Game Over</h2>
+            <p>Merci d'avoir protégé l'océan.</p>
+            <button id="restartButton">Rejouer</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Défense du Corail</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
