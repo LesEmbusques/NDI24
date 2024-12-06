@@ -153,7 +153,7 @@ function gameLoop() {
     ctx.drawImage(fishImage, currentX - 20, currentY - 35, 70, 70);
 
     // Dessiner la cible
-    ctx.drawImage(reefImage, targetPosition.x - 20, targetPosition.y - 35, 70, 70);
+    ctx.drawImage(finishImage, targetPosition.x - 20, targetPosition.y - 35, 70, 70);
 
     // Dessiner et mettre à jour les obstacles
     obstacles.forEach((obstacle) => {
