@@ -57,17 +57,17 @@ let timerInterval;
 
 // Images
 const wallImage = new Image();
-wallImage.src = "/assets/wall.png";
+wallImage.src = "public/assets/wall.png";
 const playerImage = new Image();
-playerImage.src = "/assets/player.png";
+playerImage.src = "public/assets/player.png";
 const resourceImage = new Image();
-resourceImage.src = "/assets/golden_bubble.png";
+resourceImage.src = "public/assets/golden_bubble.png";
 const exitImage = new Image();
-exitImage.src = "/assets/exit_portal.png";
+exitImage.src = "public/assets/exit_portal.png";
 const enemyImage = new Image();
-enemyImage.src = "/assets/enemy.png";
+enemyImage.src = "public/assets/enemy.png";
 const doorImage = new Image();
-doorImage.src = "/assets/door.png";
+doorImage.src = "public/assets/door.png";
 
 
 // Niveaux
