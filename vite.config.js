@@ -9,6 +9,12 @@ export default defineConfig({
     rollupOptions: {
       input:{
         main: 'index.html',
+        cerveau: './minigames/cerveau/index.html',
+        coeur: './minigames/coeur/index.html',
+        poumons: './minigames/poumons/index.html',
+        foie: './minigames/foie/index.html',
+        estomac: './minigames/estomac/index.html',
+        rein: './minigames/rein/index.html',
       }
     }
   },
