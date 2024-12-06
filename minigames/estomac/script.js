@@ -162,7 +162,6 @@ function gameOver(won) {
         ? "Félicitations ! Vous avez sauvé l'écosystème !"
         : "Oups ! L'écosystème est perturbé. Essayez à nouveau !";
     educationalMessage.textContent = ""; // Réinitialiser le message pédagogique
-    if (won) localStorage.setItem("brain", "true");
 }
 
 // Terminer le jeu avec un message éducatif
@@ -173,6 +172,8 @@ function endGame(won) {
     resultText.textContent = won
         ? "Bravo ! Vous avez terminé le jeu !"
         : "Oups ! Vous n'avez pas réussi cette fois.";
+
+    if (won) localStorage.setItem("brain", "true");
 
     // Message éducatif sur la corrélation estomac/intestin et océan
     educationalMessage.textContent =

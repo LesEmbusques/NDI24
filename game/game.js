@@ -24,6 +24,8 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
+scene.background = new THREE.Color(0xe8f4f8);
+
 // Position the camera
 camera.position.z = 7;
 camera.position.y = 10;

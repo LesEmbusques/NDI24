@@ -15,6 +15,7 @@ const scoreDisplay = document.getElementById('score');
 const levelDisplay = document.getElementById('currentLevel');
 const resultWin = document.getElementById('resultWin');
 const resultLose = document.getElementById('resultLose');
+const continueButton = document.getElementById('continueButton');
 
 let gameRunning = false;
 let score = 0;
@@ -218,9 +219,15 @@ function endGame() {
     } else {
         resultWin.classList.remove('hidden');
         resultLose.classList.add('hidden');
+        localStorage.setItem("kidney", true);
     }
     gameRunning = false;
     gameOverScreen.classList.remove('hidden');
     infoBar.classList.add('hidden');
     gameArea.classList.add('hidden');
 }
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});

@@ -9,6 +9,7 @@ const levelMessage = document.getElementById("levelMessage"); // Message au-dess
 
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
+const continueButton = document.getElementById("continueButton");
 
 canvas.width = 600;
 canvas.height = 400;
@@ -212,7 +213,8 @@ function gameOver(won) {
         resultText.textContent = "Félicitations ! Vous avez terminé tous les niveaux !";
         educationalMessage.textContent =
             "Le cœur humain pompe environ 7 500 litres de sang chaque jour pour nourrir nos cellules et maintenir l'équilibre du corps. De manière similaire, les courants océaniques déplacent chaque seconde des milliards de tonnes d'eau, répartissant chaleur et nutriments essentiels sur toute la planète, régulant ainsi le climat et soutenant la biodiversité marine. Ces deux systèmes, bien que différents, sont des moteurs de vie indispensables.";
-    } else {
+        localStorage.setItem("lungs", true);
+        } else {
         resultText.textContent = "Oups ! Vous avez échoué. Réessayez ce niveau !";
         educationalMessage.textContent = levels[currentLevel].message; // Garder le message éducatif du niveau
     }
@@ -251,4 +253,10 @@ restartButton.addEventListener("click", () => {
 
     gameRunning = true;
     gameLoop();
+});
+
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });

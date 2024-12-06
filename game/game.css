@@ -40,7 +40,8 @@ canvas {
 
 }
 
-.link:hover {
+.link:hover,
+#popups .popup .popup-content .button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -55,6 +56,7 @@ canvas {
     display: flex;
     top: 15vh;
     left: 2vw;
+    width: 30vw;
 }
 
 #informationPopup {
@@ -111,11 +113,16 @@ canvas {
     padding: 10px 20px;
     font-size: 16px;
     background-color: transparent;
+    transition: background-color 0.3s;
 }
 
 #popups .popup .popup-header .close {
     font-size: 30px;
     cursor: pointer;
+}
+
+#popups .popup .popup-header .close:hover {
+    color: rgb(66, 66, 66);
 }
 
 .popup #skeletonButton {
