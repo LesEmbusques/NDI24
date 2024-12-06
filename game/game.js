@@ -171,13 +171,13 @@ window.addEventListener('resize', () => {
 animate();
 
 function loadModels() {
-    loadModel('../modelsAndTextures/Skeleton/', 'scene.gltf', {
+    loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/Skeleton/`, 'scene.gltf', {
         position: [0, 1.05, -1],
         hoverable: false,
         name: "skeleton" 
     }, scene);
     
-    loadModel('../modelsAndTextures/', 'heart.glb', {
+    loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'heart.glb', {
         position: [0, 7, -0.8],
         scale: [0.5, 0.5, 0.5],
         hoverable: true,
@@ -185,7 +185,7 @@ function loadModels() {
     }, scene);
     
     if (localStorage.getItem("lungs")) {
-        loadModel('../modelsAndTextures/', 'lung.glb', {
+        loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'lung.glb', {
             position: [-0.15, 7, 0.5],
             scale: [1.75, 1.75, 1.75],
             hoverable: true,
@@ -194,7 +194,7 @@ function loadModels() {
     }
     
     if (localStorage.getItem("brain")) {
-        loadModel('../public/modelsAndTextures/', 'brain.glb', {
+        loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'brain.glb', {
             position: [0, 10.3, -1.2],
             scale: [1.2, 1.2, 1.2],
             hoverable: true,
@@ -203,7 +203,7 @@ function loadModels() {
     }
     
     if (localStorage.getItem("stomach")) {
-        loadModel('../modelsAndTextures/', 'stomach.glb', {
+        loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'stomach.glb', {
             position: [0.5, 6, -0.75],
             scale: [0.15, 0.15, 0.15],
             hoverable: true,
@@ -212,7 +212,7 @@ function loadModels() {
     }
     
     if (localStorage.getItem("kidney")) {
-        loadModel('../modelsAndTextures/', 'kidney.glb', {
+        loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'kidney.glb', {
             position: [-0.75, 5, -0.75],
             scale: [0.16, 0.16, 0.16],
             hoverable: true,
@@ -221,7 +221,7 @@ function loadModels() {
     }
     
     if (localStorage.getItem("liver")) {
-        loadModel('../modelsAndTextures/', 'liver.glb', {
+        loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'liver.glb', {
             position: [-0.5, 6, -0.75],
             scale: [5, 5, 5],
             rotation: [0, -Math.PI / 2, 0],
