@@ -36,46 +36,46 @@ camera.lookAt(targetPosition);
 
 // Load models
 let skeletonMesh = null;
-loadModel('../modelsAndTextures/Skeleton/', 'scene.gltf', {
+loadModel('./../modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
 }, scene);
 
-loadModel('../modelsAndTextures/', 'heart.glb', {
+loadModel('./../modelsAndTextures/', 'heart.glb', {
     position: [0, 7, -0.8],
     scale: [0.5, 0.5, 0.5],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/heart" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../modelsAndTextures/', 'lung.glb', {
+loadModel('./../modelsAndTextures/', 'lung.glb', {
     position: [-0.15, 7, 0.5],
     scale: [1.75, 1.75, 1.75],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/lung" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'brain.glb', {
+loadModel('./../modelsAndTextures/', 'brain.glb', {
     position: [0, 10.3, -1.2],
     scale: [1.2, 1.2, 1.2],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/brain" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../modelsAndTextures/', 'stomach.glb', {
+loadModel('./../modelsAndTextures/', 'stomach.glb', {
     position: [0.5, 6, -0.75],
     scale: [0.15, 0.15, 0.15],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/stomach" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../modelsAndTextures/', 'kidney.glb', {
+loadModel('./../modelsAndTextures/', 'kidney.glb', {
     position: [-0.75, 5, -0.75],
     scale: [0.16, 0.16, 0.16],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/kidney" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../modelsAndTextures/', 'liver.glb', {
+loadModel('./../modelsAndTextures/', 'liver.glb', {
     position: [-0.5, 6, -0.75],
     scale: [5, 5, 5],
     rotation: [0, -Math.PI / 2, 0],
