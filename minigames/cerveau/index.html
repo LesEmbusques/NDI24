@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Labyrinthe Océanique</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <h1>Labyrinthe Océanique</h1>
+<header>
+    <h1>Labyrinthe Océanique</h1>
+    <p>
+        Explorez l'océan en récoltant des bulles tout en évitant les dangers.
+        Répondez à des questions sur les mystères de l'océan pour avancer !
+    </p>
+</header>
+
+<main>
+    <div id="introScreen">
+        <h2>Votre mission :</h2>
         <p>
-            Explorez l'océan en récoltant des bulles tout en évitant les dangers.
-            Répondez à des questions sur les mystères de l'océan pour avancer !
+            Vous êtes un réseau cérébral, le centre de commande de l'organisme. Votre mission est de naviguer dans les
+            labyrinthes complexes du cerveau, collecter les ressources nécessaires et éviter les dangers pour maintenir
+            l'équilibre des fonctions vitales. Tout comme l'océan régule la planète,
+            le cerveau régule le corps : prêt à relever ce défi ?
         </p>
-    </header>
+        <button id="startButton">Commencer</button>
+    </div>
 
-    <main>
-        <div id="introScreen">
-            <h2>Bienvenue dans le Labyrinthe Océanique</h2>
-            <button id="startButton">Commencer</button>
-        </div>
+    <canvas id="gameCanvas" class="hidden"></canvas>
 
-        <canvas id="gameCanvas" class="hidden"></canvas>
+    <div id="winScreen" class="hidden">
+        <h2>Félicitations !</h2>
+        <p>Vous avez exploré avec succès tous les mystères de l'océan.</p>
+        <button id="restartButton">Rejouer</button>
+    </div>
+</main>
 
-        <div id="popup" class="hidden">
-            <div class="popup-content">
-                <h2 id="popup-question"></h2>
-                <div id="popup-answers"></div>
-                <button id="popup-close" class="hidden">Continuer</button>
-            </div>
-        </div>
+<footer>
+    <p>© 2024 Labyrinthe Océanique</p>
+</footer>
 
-        <div id="winScreen" class="hidden">
-            <h2>Félicitations !</h2>
-            <p>Vous avez exploré avec succès tous les mystères de l'océan.</p>
-            <button id="restartButton">Rejouer</button>
-            <button id="continueButton">Accueil</button>
-        </div>
-    </main>
-
-    <footer>
-        <p>© 2024 Labyrinthe Océanique</p>
-    </footer>
-
-    <script src="./script.js" type="module"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
