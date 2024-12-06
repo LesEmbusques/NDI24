@@ -111,7 +111,8 @@
 </body>
 <script>
     document.getElementById('terms-header').addEventListener('click', () => {
-        const audio = new Audio('./sons/vent.m4a'); // Chemin du fichier
+        import vent from '/assets/sons/vent.m4a';
+        const audio = new Audio(vent); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
 
         audio.play();
@@ -126,7 +127,8 @@
         });
     });
     document.getElementById('slider').addEventListener('click', () => {
-        const audio = new Audio('./sons/chien.m4a'); // Chemin du fichier
+        import chien from '/assets/sons/chien.m4a';
+        const audio = new Audio(chien); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
         audio.volume = 0.125;
 
@@ -142,7 +144,8 @@
         });
     });
     document.getElementById('resetDate').addEventListener('click', () => {
-        const audio = new Audio('./sons/miaou.m4a'); // Chemin du fichier
+        import miaou from '/assets/sons/miaou.m4a';
+        const audio = new Audio(miaou); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
 
         audio.play();
