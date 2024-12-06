@@ -58,18 +58,31 @@ let timeLeft = 60; // Temps par niveau (en secondes)
 let timerInterval;
 
 // Images
+import wallImageSrc from '/assets/wall.png';
+import playerImageSrc from '/assets/player.png';
+import resourceImageSrc from '/assets/golden_bubble.png';
+import exitImageSrc from '/assets/exit_portal.png';
+import enemyImageSrc from '/assets/enemy.png';
+import doorImageSrc from '/assets/door.png';
+
 const wallImage = new Image();
-wallImage.src = "./assets/wall.png";
+wallImage.src = wallImageSrc;
+
 const playerImage = new Image();
-playerImage.src = "./assets/player.png";
+playerImage.src = playerImageSrc;
+
 const resourceImage = new Image();
-resourceImage.src = "./assets/golden_bubble.png";
+resourceImage.src = resourceImageSrc;
+
 const exitImage = new Image();
-exitImage.src = "./assets/exit_portal.png";
+exitImage.src = exitImageSrc;
+
 const enemyImage = new Image();
-enemyImage.src = "./assets/enemy.png";
+enemyImage.src = enemyImageSrc;
+
 const doorImage = new Image();
-doorImage.src = "./assets/door.png";
+doorImage.src = doorImageSrc;
+
 
 
 // Niveaux

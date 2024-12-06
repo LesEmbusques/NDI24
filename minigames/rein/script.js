@@ -18,11 +18,14 @@ const restartButton = document.getElementById("restartButton");
 const continueButton = document.getElementById('continueButton');
 
 
+import toxinImageSrc from '/assets/toxin.png';
+import nutrientImageSrc from '/assets/nutrient.png';
+
 const toxinImage = new Image();
-toxinImage.src = "./assets/toxin.png"; // Image pour toxines
+toxinImage.src = toxinImageSrc;
 
 const nutrientImage = new Image();
-nutrientImage.src = "./assets/nutrient.png"; // Image pour nutriments
+nutrientImage.src = nutrientImageSrc;
 
 canvas.width = 600;
 canvas.height = 400;
