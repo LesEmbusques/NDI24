@@ -23,17 +23,20 @@ let energy = 100;
 let score = 0;
 let gameRunning = false;
 
-import debrisSrc from "/assets/debris.png"
-import finishedScr from "/assets/finish.png"
-import fishSrc from "/assets/fish.png"
-// Images pour les assets
+// Import des sources des images avec Vite
+import debrisSrc from '/assets/debris.png';
+import finishSrc from '/assets/finish.png';
+import fishSrc from '/assets/fish.png';
+
+// Création des objets Image et attribution des sources importées
 const debrisImage = new Image();
 debrisImage.src = debrisSrc;
-const reefImage = new Image();
-reefImage.src = finishedScr;
+
+const finishImage = new Image();
+finishImage.src = finishSrc;
+
 const fishImage = new Image();
 fishImage.src = fishSrc;
-
 // Niveaux
 const levels = [
     {
