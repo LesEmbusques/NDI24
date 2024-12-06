@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Chaîne Alimentaire Océanique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>La Chaîne Alimentaire Océanique</h1>
+    <p>
+        Aidez l'océan à collecter, digérer et distribuer les nutriments tout en évitant les polluants ! Maintenez l'équilibre écologique et découvrez le rôle crucial de l'océan.
+    </p>
+</header>
+
+<main>
+    <!-- Écran d'introduction -->
+    <div id="introScreen">
+        <h2>Votre mission :</h2>
+        <p>
+            Collectez les bulles de nutriments, évitez les polluants et distribuez les nutriments essentiels aux organismes marins.
+        </p>
+        <button id="startButton">Commencer</button>
+    </div>
+
+    <!-- Canvas pour le jeu -->
+    <canvas id="gameCanvas" class="hidden"></canvas>
+
+    <!-- Écran de fin -->
+    <div id="gameOver" class="hidden">
+        <h2 id="result"></h2>
+        <p id="educationalMessage"></p>
+        <button id="restartButton">Rejouer</button>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 La Chaîne Alimentaire Océanique</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

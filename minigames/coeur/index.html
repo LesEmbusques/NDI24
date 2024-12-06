@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courants Vitaux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Courants Vitaux</h1>
+    <p>
+        Aidez le courant marin à atteindre les récifs tout en évitant les débris !
+        Progressez à travers différents niveaux et découvrez l'importance des courants océaniques.
+    </p>
+</header>
+
+<main>
+    <!-- Écran d'introduction -->
+    <div id="introScreen">
+        <h2>Votre mission :</h2>
+        <p>
+            Vous êtes un courant océanique chargé de transporter des nutriments. Atteignez le récif tout en évitant les obstacles !
+        </p>
+        <button id="startButton">Commencer</button>
+    </div>
+
+    <!-- Message au-dessus du canvas -->
+    <div id="levelMessage"></div>
+
+    <!-- Canvas pour le jeu -->
+    <canvas id="gameCanvas" class="hidden"></canvas>
+
+    <!-- Écran de fin -->
+    <div id="gameOver" class="hidden">
+        <h2 id="result"></h2>
+        <p id="educationalMessage"></p>
+        <button id="restartButton">Rejouer</button>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 Courants Vitaux</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
