@@ -1,0 +1,37 @@
+name: Deploy Three.js App
+
+on:
+  push:
+    branches:
+      - main # Déclencher lors de pushs sur la branche "main"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Vérifiez le code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 2. Installez Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # 3. Installez les dépendances
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Construisez l'application
+      - name: Build App
+        run: npm run build
+
+      # 5. Déployez sur GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist # Chemin du dossier généré par Vite (ou votre bundler)
