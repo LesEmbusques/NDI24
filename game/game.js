@@ -36,46 +36,46 @@ camera.lookAt(targetPosition);
 
 // Load models
 let skeletonMesh = null;
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/Skeleton/', 'scene.gltf', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/Skeleton/`, 'scene.gltf', {
     position: [0, 1.05, -1]
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'heart.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'heart.glb', {
     position: [0, 7, -0.8],
     scale: [0.5, 0.5, 0.5],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/heart" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'lung.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'lung.glb', {
     position: [-0.15, 7, 0.5],
     scale: [1.75, 1.75, 1.75],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/lung" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'brain.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'brain.glb', {
     position: [0, 10.3, -1.2],
     scale: [1.2, 1.2, 1.2],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/brain" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'stomach.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'stomach.glb', {
     position: [0.5, 6, -0.75],
     scale: [0.15, 0.15, 0.15],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/stomach" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'kidney.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'kidney.glb', {
     position: [-0.75, 5, -0.75],
     scale: [0.16, 0.16, 0.16],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/kidney" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('${import.meta.env.BASE_URL}modelsAndTextures/', 'liver.glb', {
+loadModel(`${import.meta.env.BASE_URL}modelsAndTextures/`, 'liver.glb', {
     position: [-0.5, 6, -0.75],
     scale: [5, 5, 5],
     rotation: [0, -Math.PI / 2, 0],
