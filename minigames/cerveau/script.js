@@ -56,12 +56,12 @@ let timeLeft = 60; // Temps par niveau (en secondes)
 let timerInterval;
 
 // Images
-import wallImageSrc from './assets/wall.png';
-import playerImageSrc from './assets/player.png';
-import resourceImageSrc from './assets/golden_bubble.png';
-import exitImageSrc from './assets/exit_portal.png';
-import enemyImageSrc from './assets/enemy.png';
-import doorImageSrc from './assets/door.png';
+import wallImageSrc from '/assets/wall.png';
+import playerImageSrc from '/assets/player.png';
+import resourceImageSrc from '/assets/golden_bubble.png';
+import exitImageSrc from '/assets/exit_portal.png';
+import enemyImageSrc from '/assets/enemy.png';
+import doorImageSrc from '/assets/door.png';
 
 const wallImage = new Image();
 wallImage.src = wallImageSrc;
