@@ -4,6 +4,7 @@ const o2Count = document.getElementById('o2-count');
 const timer = document.getElementById('timer');
 const endScreen = document.getElementById('end-screen');
 const restartButton = document.getElementById('restart-button');
+const continueButton = document.getElementById('continueButton');
 const finalCo2 = document.getElementById('final-co2');
 const finalO2 = document.getElementById('final-o2');
 
@@ -47,6 +48,7 @@ function showEndScreen() {
     finalO2.textContent = o2Produced;
     endScreen.classList.remove('hidden');
     playArea.innerHTML = ''; // Vider la zone de jeu
+    localStorage.setItem("liver", "true");
 }
 
 // Redémarrer le jeu
@@ -80,3 +82,8 @@ restartButton.addEventListener('click', restartGame);
 
 // Démarrage initial
 startGame();
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});

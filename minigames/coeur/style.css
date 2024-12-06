@@ -38,6 +38,15 @@ button:hover {
     background: #0097a7;
 }
 
+#continueButton {
+    margin-left: 20px;
+    background-color: #029720;
+}
+
+#continueButton:hover {
+    background-color: #017919;
+}
+
 canvas {
     border: 3px solid white;
     display: block;
@@ -76,4 +85,3 @@ canvas {
     max-width: 600px;
     margin: 10px auto;
 }
-

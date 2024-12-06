@@ -7,6 +7,7 @@ canvas.height = 400;
 
 const startButton = document.getElementById('startButton');
 const restartButton = document.getElementById('restartButton');
+const continueButton = document.getElementById('continueButton');
 const introScreen = document.getElementById('introScreen');
 const gameOverScreen = document.getElementById('gameOver');
 const infoBar = document.getElementById('infoBar');
@@ -192,3 +193,8 @@ function endGame() {
     gameOverScreen.classList.remove('hidden');
     infoBar.classList.add('hidden');
 }
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});

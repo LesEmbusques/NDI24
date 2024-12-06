@@ -39,6 +39,16 @@ button:hover {
     background: #0097a7;
 }
 
+
+#continueButton {
+    margin-left: 20px;
+    background-color: #029720;
+}
+
+#continueButton:hover {
+    background-color: #017919;
+}
+
 canvas {
     border: 3px solid white;
     display: block;
@@ -53,7 +63,8 @@ canvas {
     display: none;
 }
 
-#gameOver, #introScreen {
+#gameOver,
+#introScreen {
     text-align: center;
     padding: 2em;
     background: rgba(0, 0, 0, 0.8);
