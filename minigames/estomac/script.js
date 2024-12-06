@@ -25,8 +25,8 @@ let spawnPollutantInterval = 2500;
 let pollutantsCollected = 0; // Nombre de polluants collectés pour changer de niveau
 
 // Images pour les assets
-import nutrientImageSrc from "./assets/nutrient.png";
-import pollutantImageSrc from "./assets/pollutant.png";
+import nutrientImageSrc from "/assets/nutrient.png";
+import pollutantImageSrc from "/assets/pollutant.png";
 
 const nutrientImage = new Image();
 nutrientImage.src = nutrientImageSrc;
