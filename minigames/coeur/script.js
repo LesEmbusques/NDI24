@@ -24,10 +24,14 @@ let score = 0;
 let gameRunning = false;
 
 // Images pour les assets
+import debrisImageSrc from '/assets/debris.png';
+import reefImageSrc from '/assets/reef.png';
+
 const debrisImage = new Image();
-debrisImage.src = "./assets/debris.png";
+debrisImage.src = debrisImageSrc;
+
 const reefImage = new Image();
-reefImage.src = "./assets/reef.png";
+reefImage.src = reefImageSrc;
 
 // Niveaux
 const levels = [
