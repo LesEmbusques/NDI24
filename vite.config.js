@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './NDI24.github.io', // Utiliser des chemins relatifs pour la production
+  base: '/NDI24.github.io/', // Utiliser des chemins relatifs pour la production
   build: {
     outDir: 'dist', // Dossier de sortie pour la production
     target: 'esnext', // Assurer la compatibilité avec les navigateurs modernes
