@@ -17,6 +17,7 @@ export default defineConfig({
         foie: resolve(__dirname, 'minigames/foie/index.html'),
         estomac: resolve(__dirname, 'minigames/estomac/index.html'),
         rein: resolve(__dirname, 'minigames/rein/index.html'),
+        formulaireDeMer: resolve(__dirname, 'FormulaireDeMer/Formulaire.html'),
       },
       output: {
         // Assurez-vous que tous les assets sont inclus dans le dossier de sortie approprié
