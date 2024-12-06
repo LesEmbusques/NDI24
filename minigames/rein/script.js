@@ -15,12 +15,17 @@ const currentLevelCounter = document.getElementById("currentLevel");
 
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
+const continueButton = document.getElementById('continueButton');
+
+
+import toxinImageSrc from '/assets/toxin.png';
+import nutrientImageSrc from '/assets/nutrient.png';
 
 const toxinImage = new Image();
-toxinImage.src = "assets/toxin.png"; // Image pour toxines
+toxinImage.src = toxinImageSrc;
 
 const nutrientImage = new Image();
-nutrientImage.src = "assets/nutrient.png"; // Image pour nutriments
+nutrientImage.src = nutrientImageSrc;
 
 canvas.width = 600;
 canvas.height = 400;
@@ -158,6 +163,7 @@ function endGame(won, message) {
 
     resultText.textContent = won ? "Félicitations !" : "Échec.";
     educationalMessage.textContent = message;
+    if (won) localStorage.setItem("stomach", "true");
 }
 
 // Réinitialise le jeu
@@ -189,4 +195,9 @@ startButton.addEventListener("click", () => {
 
 restartButton.addEventListener("click", () => {
     startButton.click();
+});
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });

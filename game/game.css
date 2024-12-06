@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -7,42 +8,6 @@ body, html {
 canvas {
     display: block;
 }
-
-#block {
-    position: absolute;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    top: 15vh;
-    right: 2vw;
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    color: black;
-    box-shadow: 0 0 10px rgba(0, 10, 0, 0.5);
-    border-radius: 25px;
-    padding: 1rem;
-    font-size: 0.8rem;
-}
-
-#skeletonButton {
-    border-radius: 25px;
-    margin-top: 2rem;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#skeletonButton:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
 
 #header {
     position: absolute;
@@ -76,5 +41,95 @@ canvas {
 }
 
 .link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#popups {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: show;
+}
+
+#popups .popup.active {
+    display: flex;
+    top: 15vh;
+    left: 2vw;
+}
+
+#informationPopup {
+    top: 15vh;
+    right: 2vw;
+    display: flex;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    width: 20vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 10, 0, 0.5);
+    border-radius: 25px;
+    padding: 1rem;
+    font-size: 0.8rem;
+}
+
+#popups .popup .popup-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+#popups .popup .popup-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#popups .popup .popup-content p {
+    width: 100%;
+    text-align: justify;
+}
+
+#popups .popup .popup-content a {
+    text-decoration: none;
+    color: black;
+}
+
+#popups .popup .popup-content .button {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+#popups .popup .popup-header .close {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.popup #skeletonButton {
+    border-radius: 25px;
+    margin-top: 2rem;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#skeletonButton:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }

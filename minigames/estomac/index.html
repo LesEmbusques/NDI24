@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Chaîne Alimentaire Océanique</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header>
-    <h1>La Chaîne Alimentaire Océanique</h1>
-    <p>
-        Aidez l'océan à collecter, digérer et distribuer les nutriments tout en évitant les polluants ! Maintenez l'équilibre écologique et découvrez le rôle crucial de l'océan.
-    </p>
-</header>
-
-<main>
-    <!-- Écran d'introduction -->
-    <div id="introScreen">
-        <h2>Votre mission :</h2>
+    <header>
+        <h1>La Chaîne Alimentaire Océanique</h1>
         <p>
-            Collectez les bulles de nutriments, évitez les polluants et distribuez les nutriments essentiels aux organismes marins.
+            Aidez l'océan à collecter, digérer et distribuer les nutriments tout en évitant les polluants ! Maintenez
+            l'équilibre écologique et découvrez le rôle crucial de l'océan.
         </p>
-        <button id="startButton">Commencer</button>
-    </div>
+    </header>
 
-    <!-- Canvas pour le jeu -->
-    <canvas id="gameCanvas" class="hidden"></canvas>
+    <main>
+        <!-- Écran d'introduction -->
+        <div id="introScreen">
+            <h2>Votre mission :</h2>
+            <p>
+                Collectez les bulles de nutriments, évitez les polluants et distribuez les nutriments essentiels aux
+                organismes marins.
+            </p>
+            <button id="startButton">Commencer</button>
+        </div>
 
-    <!-- Écran de fin -->
-    <div id="gameOver" class="hidden">
-        <h2 id="result"></h2>
-        <p id="educationalMessage"></p>
-        <button id="restartButton">Rejouer</button>
-    </div>
-</main>
+        <!-- Canvas pour le jeu -->
+        <canvas id="gameCanvas" class="hidden"></canvas>
 
-<footer>
-    <p>© 2024 La Chaîne Alimentaire Océanique</p>
-</footer>
+        <!-- Écran de fin -->
+        <div id="gameOver" class="hidden">
+            <h2 id="result"></h2>
+            <p id="educationalMessage"></p>
+            <button id="restartButton">Rejouer</button>
+            <button id="continueButton">Accueil</button>
+        </div>
+    </main>
 
-<script src="script.js"></script>
+    <footer>
+        <p>© 2024 La Chaîne Alimentaire Océanique</p>
+    </footer>
+
+    <script src="./script.js" type="module"></script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@ const introScreen = document.getElementById("introScreen");
 const gameOverScreen = document.getElementById("gameOver");
 const resultText = document.getElementById("result");
 const educationalMessage = document.getElementById("educationalMessage");
-
+const continueButton = document.getElementById('continueButton');
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
 
@@ -25,11 +25,14 @@ let spawnPollutantInterval = 2500;
 let pollutantsCollected = 0; // Nombre de polluants collectés pour changer de niveau
 
 // Images pour les assets
+import nutrientImageSrc from "/assets/nutrient.png";
+import pollutantImageSrc from "/assets/pollutant.png";
+
 const nutrientImage = new Image();
-nutrientImage.src = "assets/nutrient.png";
+nutrientImage.src = nutrientImageSrc;
 
 const pollutantImage = new Image();
-pollutantImage.src = "assets/pollutant.png";
+pollutantImage.src = pollutantImageSrc;
 
 const waterLine = canvas.height / 2; // Ligne représentant la surface de l'eau
 
@@ -159,6 +162,7 @@ function gameOver(won) {
         ? "Félicitations ! Vous avez sauvé l'écosystème !"
         : "Oups ! L'écosystème est perturbé. Essayez à nouveau !";
     educationalMessage.textContent = ""; // Réinitialiser le message pédagogique
+    if (won) localStorage.setItem("brain", "true");
 }
 
 // Terminer le jeu avec un message éducatif
@@ -228,4 +232,9 @@ startButton.addEventListener("click", () => {
 
 restartButton.addEventListener("click", () => {
     startButton.click();
+});
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });
