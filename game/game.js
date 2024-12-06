@@ -1,11 +1,15 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { loadModel } from './loader.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: myCanvas, alpha: true });
+const rendererDiv = document.getElementById('myCanvas');
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -35,7 +39,6 @@ controls.target.copy(targetPosition);
 camera.lookAt(targetPosition);
 
 // Load models
-var skeletonMesh = null;
 loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
 }, scene);
@@ -84,13 +87,6 @@ loadModel('../public/modelsAndTextures/', 'liver.glb', {
     link: "https://example.com/liver" // Lien à ouvrir lors du clic
 }, scene);
 
-// Click on mech
-toggleSkeletonVisibility: () => {
-    const object = scene.getObjectByProperty("uuid","scene.gltf");
-    console.log(object);
-    object.visible = !object.visible;
-}
-
 document.getElementById('skeletonButton').addEventListener('click', (event) => {
     const object = scene.getObjectByProperty("uuid", "scene.gltf");
     console.log(object);
@@ -99,38 +95,33 @@ document.getElementById('skeletonButton').addEventListener('click', (event) => {
 
 renderer.domElement.addEventListener('mousemove', onMouseMove, false);
 
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
 
-// Animation loop
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update(); // Update controls for damping
-    renderer.render(scene, camera);
+// Créer le pass de bloom
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+composer.addPass(bloomPass);
+
+// Appliquer le bloom à l'objet hoveré
+function applyGlowEffectToHoveredObject(object) {
+    bloomPass.enabled = true;
+    object.material.emissive.set(0x00ff00); // Change la couleur émissive de l'objet survolé
+    object.material.emissiveIntensity = 0.1; // Change l'intensité de la couleur émissive
 }
 
-// Handle window resize
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-animate();
-
-
-function applyHoverEffect(object) {
-    if (!object.userData.originalColor) {
-        object.userData.originalColor = object.material.color.clone();
-    }
-    object.material.color.set(0xff0000); // Change la couleur en rouge
-}
-
-function resetHoverEffect(object) {
-    if (object.userData.originalColor) {
-        object.material.color.copy(object.userData.originalColor);
-    }
+// Désactiver l'effet glow lorsque l'objet n'est plus survolé
+function resetGlowEffect(object) {
+    bloomPass.enabled = false;
+    object.material.emissive.set(0x000000); // Réinitialise la couleur émissive de l'objet
 }
 
 // hover organs
-let hoveredObject = null;
+var hoveredObject = null;
+
+var updatePointer = () => {
+    document.getElementById('myCanvas').style.cursor = hoveredObject ? 'pointer' : 'auto';
+}
 
 function onMouseMove(event) {
     // Mettre à jour les coordonnées de la souris
@@ -148,20 +139,19 @@ function onMouseMove(event) {
 
         // Vérifier si l'objet est hoverable
         if (object.userData.hoverable) {
-            
             if (hoveredObject !== object) {
-                if (hoveredObject) resetHoverEffect(hoveredObject);
-                applyHoverEffect(object);
+                if (hoveredObject) resetGlowEffect(hoveredObject);
+                applyGlowEffectToHoveredObject(object);
                 hoveredObject = object;
             }
         } else {
             // Si l'objet n'est pas hoverable, réinitialiser
-            if (hoveredObject) resetHoverEffect(hoveredObject);
+            if (hoveredObject) resetGlowEffect(hoveredObject);
             hoveredObject = null;
         }
     } else {
         // Réinitialiser si aucun objet n'est survolé
-        if (hoveredObject) resetHoverEffect(hoveredObject);
+        if (hoveredObject) resetGlowEffect(hoveredObject);
         hoveredObject = null;
     }
 }
@@ -189,3 +179,24 @@ function onClick(event) {
     }
 }
 renderer.domElement.addEventListener('click', onClick, false);
+
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update(); // Update controls for damping
+    if (hoveredObject) {
+        applyGlowEffectToHoveredObject(hoveredObject);
+    }
+    updatePointer();
+    renderer.render(scene, camera);
+}
+
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+animate();
