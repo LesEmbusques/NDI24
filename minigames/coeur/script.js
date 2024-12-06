@@ -23,13 +23,16 @@ let energy = 100;
 let score = 0;
 let gameRunning = false;
 
+import debrisSrc from "/assets/debris.png"
+import finishedScr from "/assets/finish.png"
+import fishSrc from "/assets/fish.png"
 // Images pour les assets
 const debrisImage = new Image();
-debrisImage.src = "assets/debris.png";
+debrisImage.src = debrisImage;
 const reefImage = new Image();
-reefImage.src = "assets/finish.png";
+reefImage.src = finishedScr;
 const fishImage = new Image();
-fishImage.src = "assets/fish.png";
+fishImage.src = fishSrc;
 
 // Niveaux
 const levels = [
