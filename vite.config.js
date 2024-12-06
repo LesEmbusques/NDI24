@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
+import usePHP from 'vite-plugin-php';
 
 export default defineConfig({
+  plugins: [usePHP()],
   base: '/NDI24.github.io/', // Utiliser des chemins relatifs pour la production
   build: {
     outDir: 'dist', // Dossier de sortie pour la production
