@@ -28,7 +28,7 @@ import finishedScr from "/assets/finish.png"
 import fishSrc from "/assets/fish.png"
 // Images pour les assets
 const debrisImage = new Image();
-debrisImage.src = debrisImage;
+debrisImage.src = debrisSrc;
 const reefImage = new Image();
 reefImage.src = finishedScr;
 const fishImage = new Image();
