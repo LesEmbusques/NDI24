@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { loadModel } from './loader.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {loadModel} from './loader.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
@@ -39,19 +39,19 @@ controls.target.copy(targetPosition);
 camera.lookAt(targetPosition);
 
 // Load models
-loadModel('../public/modelsAndTextures/Skeleton/', 'scene.gltf', {
+let skeletonMesh = null;
+loadModel('../modelsAndTextures/Skeleton/', 'scene.gltf', {
     position: [0, 1.05, -1]
 }, scene);
 
-
-loadModel('../public/modelsAndTextures/', 'heart.glb', {
+loadModel('../modelsAndTextures/', 'heart.glb', {
     position: [0, 7, -0.8],
     scale: [0.5, 0.5, 0.5],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/heart" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'lung.glb', {
+loadModel('../modelsAndTextures/', 'lung.glb', {
     position: [-0.15, 7, 0.5],
     scale: [1.75, 1.75, 1.75],
     hoverable: true,   // Indique si l'objet est interactif
@@ -59,33 +59,34 @@ loadModel('../public/modelsAndTextures/', 'lung.glb', {
 }, scene);
 
 loadModel('../public/modelsAndTextures/', 'brain.glb', {
-    position: [0, 10.3, -1.5],
-    scale: [1.25, 1.25, 1.25],
+    position: [0, 10.3, -1.2],
+    scale: [1.2, 1.2, 1.2],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/brain" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'stomach.glb', {
+loadModel('../modelsAndTextures/', 'stomach.glb', {
     position: [0.5, 6, -0.75],
     scale: [0.15, 0.15, 0.15],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/stomach" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'kidney.glb', {
+loadModel('../modelsAndTextures/', 'kidney.glb', {
     position: [-0.75, 5, -0.75],
     scale: [0.16, 0.16, 0.16],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/kidney" // Lien à ouvrir lors du clic
 }, scene);
 
-loadModel('../public/modelsAndTextures/', 'liver.glb', {
+loadModel('../modelsAndTextures/', 'liver.glb', {
     position: [-0.5, 6, -0.75],
     scale: [5, 5, 5],
     rotation: [0, -Math.PI / 2, 0],
     hoverable: true,   // Indique si l'objet est interactif
     link: "https://example.com/liver" // Lien à ouvrir lors du clic
 }, scene);
+
 
 document.getElementById('skeletonButton').addEventListener('click', (event) => {
     const object = scene.getObjectByProperty("uuid", "scene.gltf");
@@ -139,6 +140,7 @@ function onMouseMove(event) {
 
         // Vérifier si l'objet est hoverable
         if (object.userData.hoverable) {
+
             if (hoveredObject !== object) {
                 if (hoveredObject) resetGlowEffect(hoveredObject);
                 applyGlowEffectToHoveredObject(object);
