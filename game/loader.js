@@ -1,7 +1,7 @@
 import { GLTFLoader } from 'three/addons';
 
 // Fonction générique pour charger un modèle GLTF
-export const loadModel = (path, fileName, { position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], hoverable = false, link = ""}, scene) => {
+export const loadModel = (path, fileName, { position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], hoverable = false, name = ""}, scene) => {
     const loader = new GLTFLoader().setPath(path);
     loader.load(
         fileName,
@@ -25,7 +25,7 @@ export const loadModel = (path, fileName, { position = [0, 0, 0], scale = [1, 1,
             // Propagation des données userData au modèle et à tous ses enfants
             mesh.userData = {
                 hoverable: hoverable,
-                link: link
+                name: name
             };
 
             mesh.traverse((child) => {
@@ -36,7 +36,7 @@ export const loadModel = (path, fileName, { position = [0, 0, 0], scale = [1, 1,
                     // Propagation des userData aux enfants
                     child.userData = {
                         hoverable: hoverable,
-                        link: link
+                        name: name
                     };
                 }
             });
