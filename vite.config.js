@@ -10,12 +10,12 @@ export default defineConfig({
     rollupOptions: {
       input:{
         main: 'index.html',
-        cerveau: resolve(__dirname,'./minigames/cerveau/index.html'),
-        coeur: resolve(__dirname,'./minigames/coeur/index.html'),
-        poumons: resolve(__dirname,'./minigames/poumons/index.html'),
-        foie: resolve(__dirname,'./minigames/foie/index.html'),
-        estomac: resolve(__dirname,'./minigames/estomac/index.html'),
-        rein: resolve(__dirname,'./minigames/rein/index.html'),
+        cerveau: resolve(__dirname,'minigames/cerveau/index.html'),
+        coeur: resolve(__dirname,'minigames/coeur/index.html'),
+        poumons: resolve(__dirname,'minigames/poumons/index.html'),
+        foie: resolve(__dirname,'minigames/foie/index.html'),
+        estomac: resolve(__dirname,'minigames/estomac/index.html'),
+        rein: resolve(__dirname,'minigames/rein/index.html'),
       }
     }
   },
