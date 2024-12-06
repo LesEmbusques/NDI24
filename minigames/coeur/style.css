@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #0077be, #001f3f);
+    color: white;
+    text-align: center;
+}
+
+header {
+    background: #004d80;
+    color: white;
+    padding: 1em;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+}
+
+main {
+    padding: 2em;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0097a7;
+}
+
+canvas {
+    border: 3px solid white;
+    display: block;
+    margin: 0 auto;
+    background: url('assets/background.png') no-repeat center center;
+    background-size: cover;
+}
+
+.hidden {
+    display: none;
+}
+
+#gameOver {
+    text-align: center;
+}
+
+#introScreen {
+    text-align: center;
+    padding: 2em;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#levelMessage {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 10px auto;
+}
+

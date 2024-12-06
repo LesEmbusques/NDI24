@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-jeu Photosynthèse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="game-container">
+    <h1>Mini-jeu : Échanges gazeux</h1>
+    <div class="scoreboard">
+        <div>CO₂ absorbé : <span id="co2-count">0</span></div>
+        <div>O₂ produit : <span id="o2-count">0</span></div>
+        <div>Temps restant : <span id="timer">30</span> s</div>
+    </div>
+    <div id="play-area"></div>
+</div>
+
+<div id="end-screen" class="hidden">
+    <h2>Temps écoulé !</h2>
+    <p>Vous avez absorbé <span id="final-co2">0</span> CO₂ et produit <span id="final-o2">0</span> O₂.</p>
+    <button id="restart-button">Rejouer</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
