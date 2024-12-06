@@ -17,7 +17,12 @@ export default defineConfig({
         foie: resolve(__dirname,'minigames/foie/index.html'),
         estomac: resolve(__dirname,'minigames/estomac/index.html'),
         rein: resolve(__dirname,'minigames/rein/index.html'),
-      }
+      },
+        output: {
+          cerveau: {
+            assets: 'minigames/cerveau/assets',
+          },
+        },
     }
   },
   resolve: {
