@@ -27,7 +27,9 @@ let gameRunning = false;
 const debrisImage = new Image();
 debrisImage.src = "assets/debris.png";
 const reefImage = new Image();
-reefImage.src = "assets/reef.png";
+reefImage.src = "assets/finish.png";
+const fishImage = new Image();
+fishImage.src = "assets/fish.png";
 
 // Niveaux
 const levels = [
@@ -41,8 +43,8 @@ const levels = [
     {
         id: 2,
         obstacles: [
-            { x: 100, y: 50, width: 50, height: 50, speed: 1.5 },
-            { x: 300, y: 150, width: 50, height: 50, speed: 2 },
+            { x: 100, y: 50, width: 50, height: 50, speed: 1.25 },
+            { x: 300, y: 150, width: 50, height: 50, speed: 1.5 },
         ],
         timeLimit: 25,
         targetPosition: { x: 550, y: 300 },
@@ -51,9 +53,9 @@ const levels = [
     {
         id: 3,
         obstacles: [
-            { x: 150, y: 50, width: 50, height: 50, speed: 2 },
-            { x: 300, y: 100, width: 50, height: 50, speed: 2.5 },
-            { x: 400, y: 200, width: 50, height: 50, speed: 3 },
+            { x: 150, y: 50, width: 50, height: 50, speed: 1.5 },
+            { x: 300, y: 100, width: 50, height: 50, speed: 1.75 },
+            { x: 400, y: 200, width: 50, height: 50, speed: 2 },
         ],
         timeLimit: 20,
         targetPosition: { x: 550, y: 250 },
@@ -62,9 +64,9 @@ const levels = [
     {
         id: 4,
         obstacles: [
-            { x: 100, y: 50, width: 50, height: 50, speed: 2.5 },
-            { x: 250, y: 100, width: 50, height: 50, speed: 3 },
-            { x: 400, y: 150, width: 50, height: 50, speed: 3.5 },
+            { x: 100, y: 50, width: 50, height: 50, speed: 2 },
+            { x: 250, y: 100, width: 50, height: 50, speed: 2.25 },
+            { x: 400, y: 150, width: 50, height: 50, speed: 2.5 },
         ],
         timeLimit: 15,
         targetPosition: { x: 550, y: 300 },
@@ -73,10 +75,10 @@ const levels = [
     {
         id: 5,
         obstacles: [
-            { x: 150, y: 50, width: 50, height: 50, speed: 3 },
-            { x: 300, y: 150, width: 50, height: 50, speed: 3.5 },
-            { x: 400, y: 200, width: 50, height: 50, speed: 4 },
-            { x: 450, y: 250, width: 50, height: 50, speed: 4.5 },
+            { x: 150, y: 50, width: 50, height: 50, speed: 2.5 },
+            { x: 300, y: 150, width: 50, height: 50, speed: 2.75 },
+            { x: 400, y: 200, width: 50, height: 50, speed: 3 },
+            { x: 450, y: 250, width: 50, height: 50, speed: 3.25 },
         ],
         timeLimit: 10,
         targetPosition: { x: 550, y: 200 },
@@ -137,13 +139,15 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Dessiner le joueur
-    ctx.fillStyle = "red";
-    ctx.beginPath();
-    ctx.arc(currentX, currentY, 15, 0, Math.PI * 2);
-    ctx.fill();
+    // ctx.fillStyle = "red";
+    // ctx.beginPath();
+    // ctx.arc(currentX, currentY, 15, 0, Math.PI * 2);
+    // ctx.fill();
+
+    ctx.drawImage(fishImage, currentX - 20, currentY - 35, 70, 70);
 
     // Dessiner la cible
-    ctx.drawImage(reefImage, targetPosition.x - 20, targetPosition.y - 20, 40, 40);
+    ctx.drawImage(reefImage, targetPosition.x - 20, targetPosition.y - 35, 70, 70);
 
     // Dessiner et mettre à jour les obstacles
     obstacles.forEach((obstacle) => {
@@ -155,8 +159,7 @@ function gameLoop() {
         }
     });
 
-    // Dessiner la jauge d'énergie
-    drawEnergyBar();
+
 
     // Vérification de l'arrivée à la cible
     if (
@@ -181,14 +184,6 @@ function checkCollision(rect1, rect2) {
     );
 }
 
-// Jauge d'énergie
-function drawEnergyBar() {
-    ctx.fillStyle = "red";
-    ctx.fillRect(10, canvas.height - 20, 200, 10); // Bar vide
-    ctx.fillStyle = "green";
-    ctx.fillRect(10, canvas.height - 20, (energy / 100) * 200, 10); // Bar remplie
-}
-
 // Passer au niveau suivant
 function nextLevel() {
     if (currentLevel + 1 < levels.length) {
@@ -203,9 +198,18 @@ function gameOver(won) {
     gameRunning = false;
     gameOverScreen.classList.remove("hidden");
     canvas.classList.add("hidden");
+    levelMessage.classList.add("hidden");
     resultText.textContent = won
         ? "Félicitations ! Vous avez terminé tous les niveaux !"
         : "Oups ! Vous avez échoué. Essayez à nouveau !";
+    if (won) {
+        resultText.textContent = "Félicitations ! Vous avez terminé tous les niveaux !";
+        educationalMessage.textContent =
+            "Le cœur humain pompe environ 7 500 litres de sang chaque jour pour nourrir nos cellules et maintenir l'équilibre du corps. De manière similaire, les courants océaniques déplacent chaque seconde des milliards de tonnes d'eau, répartissant chaleur et nutriments essentiels sur toute la planète, régulant ainsi le climat et soutenant la biodiversité marine. Ces deux systèmes, bien que différents, sont des moteurs de vie indispensables.";
+    } else {
+        resultText.textContent = "Oups ! Vous avez échoué. Réessayez ce niveau !";
+        educationalMessage.textContent = levels[currentLevel].message; // Garder le message éducatif du niveau
+    }
 }
 
 // Gestion des contrôles
@@ -222,11 +226,23 @@ startButton.addEventListener("click", () => {
     introScreen.classList.add("hidden");
     canvas.classList.remove("hidden");
     gameOverScreen.classList.add("hidden");
+    levelMessage.classList.remove("hidden"); // Afficher le message de niveau
     loadLevel(0);
     gameRunning = true;
     gameLoop();
 });
 
 restartButton.addEventListener("click", () => {
-    startButton.click();
+    introScreen.classList.add("hidden");
+    gameOverScreen.classList.add("hidden");
+    canvas.classList.remove("hidden");
+    levelMessage.classList.remove("hidden"); // Afficher le message de niveau
+    if (resultText.textContent.includes("Félicitations")) {
+        loadLevel(0); // Repartir au premier niveau si le joueur a gagné
+    } else {
+        loadLevel(currentLevel); // Rejouer le même niveau si le joueur a perdu
+    }
+
+    gameRunning = true;
+    gameLoop();
 });
