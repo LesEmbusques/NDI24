@@ -20,7 +20,7 @@
             <p>Points : <span id="score">0</span></p>
         </div>
 
-        <div id="gameArea">
+        <div id="gameArea" class="hidden">
             <canvas id="gameCanvas"></canvas>
         </div>
 
@@ -31,8 +31,9 @@
         </div>
 
         <div id="gameOver" class="hidden">
-            <h2 id="result">Game Over</h2>
-            <p>Merci d'avoir protégé l'océan.</p>
+            <h2 id="resultWin" class="hidden">Victoire !</h2>
+            <h2 id="resultLose" class="hidden">Défaite !</h2>
+            <p id="educationalMessage">Tout comme ton foie, les écosystèmes marins, tel que les mangroves et les récifs coralliens, traitent et recyclent les déchets. Cela contribut à la decomposition des matières organiques.</p>
             <button id="restartButton">Rejouer</button>
             <button id="continueButton">Accueil</button>
         </div>
