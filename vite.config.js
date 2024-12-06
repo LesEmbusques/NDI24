@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   base: '/NDI24.github.io/', // Utiliser des chemins relatifs pour la production
+  assetsInclude: ['**/*.png'],
   build: {
     outDir: 'dist', // Dossier de sortie pour la production
     target: 'esnext', // Assurer la compatibilité avec les navigateurs modernes
