@@ -109,9 +109,12 @@
 
 
 </body>
-<script>
+<script type="module">
+    import vent from '/assets/sons/vent.m4a';
+    import chien from '/assets/sons/chien.m4a';
+    import miaou from '/assets/sons/miaou.m4a';
+
     document.getElementById('terms-header').addEventListener('click', () => {
-        import vent from '/assets/sons/vent.m4a';
         const audio = new Audio(vent); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
 
@@ -127,7 +130,6 @@
         });
     });
     document.getElementById('slider').addEventListener('click', () => {
-        import chien from '/assets/sons/chien.m4a';
         const audio = new Audio(chien); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
         audio.volume = 0.125;
@@ -144,7 +146,6 @@
         });
     });
     document.getElementById('resetDate').addEventListener('click', () => {
-        import miaou from '/assets/sons/miaou.m4a';
         const audio = new Audio(miaou); // Chemin du fichier
         let playCount = 0; // Compteur de lectures
 
