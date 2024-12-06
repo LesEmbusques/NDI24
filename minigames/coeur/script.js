@@ -9,6 +9,7 @@ const levelMessage = document.getElementById("levelMessage"); // Message au-dess
 
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
+const continueButton = document.getElementById("continueButton");
 
 canvas.width = 600;
 canvas.height = 400;
@@ -206,6 +207,7 @@ function gameOver(won) {
     resultText.textContent = won
         ? "Félicitations ! Vous avez terminé tous les niveaux !"
         : "Oups ! Vous avez échoué. Essayez à nouveau !";
+    if (won) localStorage.setItem("lungs", "true");
 }
 
 // Gestion des contrôles
@@ -229,4 +231,8 @@ startButton.addEventListener("click", () => {
 
 restartButton.addEventListener("click", () => {
     startButton.click();
+});
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });

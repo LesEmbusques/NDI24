@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purification en profondeur</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>Purification en profondeur</h1>
@@ -17,7 +19,7 @@
             <p>Niveau : <span id="currentLevel">1</span></p>
             <p>Toxines capturées : <span id="toxinsMissed">0</span> / <span id="nutrientsRequired">3</span> </p>
             <p>Nutriments capturés : <span id="nutrientsCaptured">0</span> / 5 max</p>
-            
+
         </div>
 
         <div id="gameArea">
@@ -25,7 +27,8 @@
             <div id="legend" class="hidden">
                 <h3>Légende</h3>
                 <p><span class="legend-icon toxin"></span> Toxines : Capturez-les pour purifier l'eau.</p>
-                <p><span class="legend-icon nutrient"></span> Nutriments : Capturez-les pour stabiliser l'écosystème.</p>
+                <p><span class="legend-icon nutrient"></span> Nutriments : Capturez-les pour stabiliser l'écosystème.
+                </p>
             </div>
         </div>
 
@@ -39,6 +42,7 @@
             <h2 id="result"></h2>
             <p id="educationalMessage"></p>
             <button id="restartButton">Rejouer</button>
+            <button id="continueButton">Accueil</button>
         </div>
     </main>
 
@@ -46,6 +50,7 @@
         <p>© 2024 Purification en profondeur</p>
     </footer>
 
-<script src="./script.js" type="module"></script>
+    <script src="./script.js" type="module"></script>
 </body>
+
 </html>

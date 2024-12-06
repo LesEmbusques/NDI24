@@ -4,6 +4,8 @@ const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
 const introScreen = document.getElementById("introScreen");
 const winScreen = document.getElementById("winScreen");
+const continueButton = document.getElementById('continueButton');
+
 
 const questions = [
     {
@@ -379,4 +381,9 @@ startButton.addEventListener("click", () => {
 
 restartButton.addEventListener("click", () => {
     startButton.click();
+});
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });

@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #87CEEB; /* bleu ciel */
+    background-color: #87CEEB;
+    /* bleu ciel */
     margin: 0;
     padding: 0;
 }
@@ -23,7 +24,8 @@ body {
     height: 400px;
     margin: 0 auto;
     border: 2px solid #fff;
-    background-color: #98FB98; /* vert clair */
+    background-color: #98FB98;
+    /* vert clair */
     overflow: hidden;
     border-radius: 10px;
 }
@@ -32,7 +34,8 @@ body {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: rgba(0, 191, 255, 0.7); /* bleu clair */
+    background-color: rgba(0, 191, 255, 0.7);
+    /* bleu clair */
     border-radius: 50%;
     animation: float 5s linear infinite;
     cursor: pointer;
@@ -42,6 +45,7 @@ body {
     from {
         transform: translateY(100%);
     }
+
     to {
         transform: translateY(-100%);
     }
@@ -59,6 +63,16 @@ body {
     border-radius: 10px;
     margin: 0 auto;
     max-width: 600px;
+}
+
+
+#continueButton {
+    margin-left: 20px;
+    background-color: #029720;
+}
+
+#continueButton:hover {
+    background-color: #017919;
 }
 
 button {
