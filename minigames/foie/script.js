@@ -5,16 +5,14 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 400;
 
-const gameArea = document.getElementById('gameArea');
 const startButton = document.getElementById('startButton');
 const restartButton = document.getElementById('restartButton');
+const continueButton = document.getElementById('continueButton');
 const introScreen = document.getElementById('introScreen');
 const gameOverScreen = document.getElementById('gameOver');
 const infoBar = document.getElementById('infoBar');
 const scoreDisplay = document.getElementById('score');
 const levelDisplay = document.getElementById('currentLevel');
-const resultWin = document.getElementById('resultWin');
-const resultLose = document.getElementById('resultLose');
 
 let gameRunning = false;
 let score = 0;
@@ -23,15 +21,6 @@ let currentLevel = 1;
 let enemies = [];
 let bubbles = [];
 let coral = { x: canvas.width / 2 - 25, y: canvas.height - 50, width: 50, height: 50 };
-
-const corailImage = new Image();
-corailImage.src = 'assets/corail.png';
-const bubbleImage = new Image();
-bubbleImage.src = 'assets/bubble.png';
-const dechetsImage = new Image();
-dechetsImage.src = 'assets/dechets.png';
-
-
 let waveY = 0; // The vertical position of the wave
 
 canvas.addEventListener('mousemove', (e) => {
@@ -44,7 +33,6 @@ startButton.addEventListener('click', startGame);
 restartButton.addEventListener('click', restartGame);
 
 function startGame() {
-    gameArea.classList.remove('hidden');
     introScreen.classList.add('hidden');
     gameOverScreen.classList.add('hidden');
     infoBar.classList.remove('hidden');
@@ -62,7 +50,6 @@ function startGame() {
 }
 
 function restartGame() {
-    gameArea.classList.remove('hidden');
     gameOverScreen.classList.add('hidden');
     gameRunning = true;
     score = 0;
@@ -87,7 +74,7 @@ function generateEnemies() {
     waveY = 0;
 
     if (currentLevel === 1) {
-        let rows = 5;
+        let rows = 6;
         let enemySpacing = 40;
         let startY = canvas.height * -0.6;
 
@@ -100,7 +87,7 @@ function generateEnemies() {
             }
         }
     } else if (currentLevel === 2) {
-        let rows = 2;
+        let rows = 4;
         let enemiesPerRow = 8;
         let enemySpacing = 50;
         let startY = canvas.height * -0.6;
@@ -130,10 +117,6 @@ function gameLoop() {
     if (lives <= 0) {
         endGame();
     } else if (enemies.length === 0) {
-        if (currentLevel === 2) {
-            endGame();
-            return;
-        }
         nextLevel();
     } else {
         requestAnimationFrame(gameLoop);
@@ -141,35 +124,33 @@ function gameLoop() {
 }
 
 function drawCoral() {
-    ctx.drawImage(corailImage, coral.x, coral.y, coral.width, coral.height);
+    ctx.fillStyle = 'pink';
+    ctx.fillRect(coral.x, coral.y, coral.width, coral.height);
 }
 
 function drawEnemies() {
+    ctx.fillStyle = 'red';
     if (currentLevel === 1) waveY += 0.75;
     else if (currentLevel === 2) waveY += 0.6;
 
     enemies.forEach((enemy) => {
-        const enemyGlobalY = enemy.y + waveY;
-
-        // Dessiner l'image des ennemis (déchets)
-        ctx.drawImage(dechetsImage, enemy.x, enemyGlobalY, enemy.width, enemy.height);
+        ctx.fillRect(enemy.x, enemy.y + waveY, enemy.width, enemy.height);
     });
 
-    // Vérifier si un ennemi atteint le corail
     if (enemies.some((enemy) => enemy.y + waveY + enemy.height >= coral.y)) {
         lives = 0;
     }
 }
 
 function drawBubbles() {
+    ctx.fillStyle = 'blue';
     bubbles.forEach((bubble, index) => {
-        bubble.y -= 5; // Déplacement de la bulle vers le haut
-        ctx.drawImage(bubbleImage, bubble.x - bubble.radius, bubble.y - bubble.radius, bubble.radius * 2, bubble.radius * 2);
+        bubble.y -= 5;
+        ctx.beginPath();
+        ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+        ctx.fill();
 
-        // Supprimer la bulle si elle sort de l'écran
-        if (bubble.y + bubble.radius < 0) {
-            bubbles.splice(index, 1);
-        }
+        if (bubble.y < 0) bubbles.splice(index, 1);
     });
 }
 
@@ -208,15 +189,12 @@ function updateLevelDisplay() {
 }
 
 function endGame() {
-    if (lives <= 0) {
-        resultLose.classList.remove('hidden');
-        resultWin.classList.add('hidden');
-    } else {
-        resultWin.classList.remove('hidden');
-        resultLose.classList.add('hidden');
-    }
     gameRunning = false;
     gameOverScreen.classList.remove('hidden');
     infoBar.classList.add('hidden');
-    gameArea.classList.add('hidden');
 }
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});

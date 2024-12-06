@@ -15,13 +15,17 @@ const currentLevelCounter = document.getElementById("currentLevel");
 
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
+const continueButton = document.getElementById('continueButton');
 
-const filetImage = new Image();
-filetImage.src = "assets/filet.png";
-const nutrimentImage = new Image();
-nutrimentImage.src = "assets/nutriment.png";
-const toxineImage = new Image();
-toxineImage.src = "assets/puanteur.png";
+
+import toxinImageSrc from '/assets/toxin.png';
+import nutrientImageSrc from '/assets/nutrient.png';
+
+const toxinImage = new Image();
+toxinImage.src = toxinImageSrc;
+
+const nutrientImage = new Image();
+nutrientImage.src = nutrientImageSrc;
 
 canvas.width = 600;
 canvas.height = 400;
@@ -50,7 +54,7 @@ const filterHeight = 20;
 function createParticle() {
     const type = Math.random() < 0.7 ? PARTICLE_TYPES.TOXIN : PARTICLE_TYPES.NUTRIENT;
     const x = Math.random() * canvas.width;
-    const y = -20; 
+    const y = -20;
     const speed = Math.random() + 1 + level * 0.5;
     var try_swap = false;
 
@@ -69,7 +73,7 @@ function updateCounters() {
 function nextLevel() {
     level++;
     if (level > 3) {
-        endGame(true, educationalMessage.textContent);
+        endGame(true, "Félicitations ! Vous avez terminé les 3 niveaux !");
         return;
     }
     capturedToxins = 0;
@@ -86,7 +90,11 @@ function nextLevel() {
 
 // Dessine une particule
 function drawParticle(particle) {
-    ctx.drawImage(particle.type === PARTICLE_TYPES.TOXIN ? toxineImage : nutrimentImage, particle.x - 10, particle.y - 10, 40, 40);
+    if (particle.type === PARTICLE_TYPES.TOXIN) {
+        ctx.drawImage(toxinImage, particle.x - 10, particle.y - 15, 30, 30);
+    } else {
+        ctx.drawImage(nutrientImage, particle.x - 10, particle.y - 15, 30, 30);
+    }
 }
 
 // Boucle principale
@@ -100,16 +108,15 @@ function gameLoop() {
 
     particles.forEach((particle, index) => {
         particle.y += particle.speed;
-    
+
         // Transformation des toxines en nutriments au niveau 1
         if (level === 3 && particle.type === PARTICLE_TYPES.TOXIN && particle.y >= canvas.height * 0.55) {
             if (Math.random() < 0.5 && particle.try_swap === false) {
                 particle.type = PARTICLE_TYPES.NUTRIENT; // Transformation
-                ctx.drawImage(nutrimentImage, particle.x - 10, particle.y - 10, 40, 40);
             }
             particle.try_swap = true;
         }
-    
+
         // Collision avec le filtre
         if (
             particle.y > canvas.height - filterHeight &&
@@ -126,10 +133,11 @@ function gameLoop() {
         } else if (particle.y > canvas.height) {
             particles.splice(index, 1);
         }
-    
+
         drawParticle(particle);
     });
-    
+
+
     if (capturedNutrients >= MAX_CAPTURED_NUTRIENTS) {
         endGame(false, "Trop de nutriments ont été capturés !");
     } else if (capturedToxins >= toxinsRequired) {
@@ -142,7 +150,8 @@ function gameLoop() {
 
 // Dessine le filtre
 function drawFilter() {
-    ctx.drawImage(filetImage, filterX, canvas.height - filterHeight, filterWidth, filterHeight);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(filterX, canvas.height - filterHeight, filterWidth, filterHeight);
 }
 
 // Termine le jeu
@@ -154,6 +163,7 @@ function endGame(won, message) {
 
     resultText.textContent = won ? "Félicitations !" : "Échec.";
     educationalMessage.textContent = message;
+    if (won) localStorage.setItem("stomach", "true");
 }
 
 // Réinitialise le jeu
@@ -184,6 +194,10 @@ startButton.addEventListener("click", () => {
 });
 
 restartButton.addEventListener("click", () => {
-    gameOverScreen.classList.add("hidden");
     startButton.click();
+});
+
+
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
 });

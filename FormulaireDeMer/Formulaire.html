@@ -1,0 +1,687 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Les Embusquées</title>
+</head>
+<body>
+
+    <div class="container">
+        <label for="Prenom">Prenom</label>
+        <input type="text" readonly id="Prenom" value="" onfocusout="stopChangingLetter()" onfocus="startChangingLetter()"></input>
+        
+        <button onclick="resetLetters()" > Reinitialiser les lettres</button>
+    </div>
+    <form>
+        <label for="Phone">Téléphone</label>
+        <input type="range" id="slider" min="600000000" max="799999999" value="0"/>
+        <p id="test">0</p>
+    </form>
+        <label for="Birthday">Date de naissance</label>
+        <div class="date-display" id="random-date">--/--/----</div>
+        <div class="buttons">
+            <button onclick="generateDate('before')">Avant</button>
+            <button onclick="generateDate('later')">Après</button>
+            <button id="resetDate" onclick="resetGame()">Réinitialiser</button>
+        </div>
+
+    <div class="container">
+        <label for="passeword">Mot de passe</label>
+
+        <input type="password" id="password" placeholder="Tape ton mot de passe...">
+        <ul id="requirements"></ul>
+    </div>
+
+    <div class="container">
+        
+
+        <div class="terms-container" style="margin-top: 30px; text-align: left; font-size: 0.9em; line-height: 1.5;">
+            <span id="terms-header" style="color: #007BFF; text-decoration: underline; cursor: pointer;" onclick="openTermsPopup()">Termes et Conditions</span>
+        </div>
+
+        <!-- Popup for Terms and Conditions -->
+        <div id="popup-overlay"></div>
+            <div id="terms-popup">
+                <h3>Termes et Conditions d'Utilisation</h3>
+
+                <p>Bienvenue dans notre application (« l'Application »). En utilisant l'Application, vous acceptez les termes et conditions décrits ci-dessous. Ces termes s'appliquent à tous les utilisateurs, visiteurs et toute autre personne accédant à l'Application.</p>
+
+                <h4>1. Acceptation des Conditions</h4>
+                <p>En téléchargeant, installant ou utilisant l'Application, vous acceptez expressément de vous conformer et d'être lié par les présentes conditions générales d'utilisation (« CGU »). Si vous n'acceptez pas ces CGU, veuillez cesser immédiatement toute utilisation de l'Application.</p>
+                <p>Nous nous réservons le droit de modifier ou de mettre à jour ces CGU à tout moment sans préavis. Il est de votre responsabilité de consulter régulièrement les CGU pour rester informé des modifications.</p>
+
+                <h4>2. Utilisation de l'Application</h4>
+                <p>Vous vous engagez à utiliser l'Application uniquement à des fins légales et conformément aux présentes CGU. Il vous est interdit de :</p>
+                <ul>
+                    <li>Publier ou transmettre des contenus illicites, offensants, diffamatoires, obscènes ou menaçants.</li>
+                    <li>Utiliser l'Application de manière à perturber, endommager ou réduire ses performances.</li>
+                    <li>Tenter d'accéder sans autorisation à des sections restreintes ou protégées de l'Application.</li>
+                    <li>Copier, reproduire, distribuer ou exploiter commercialement tout contenu de l'Application sans autorisation préalable.</li>
+                </ul>
+
+                <h4>3. Propriété Intellectuelle</h4>
+                <p>Tout contenu présent dans l'Application, y compris mais sans s'y limiter, les textes, graphiques, logos, icônes, images, sons, vidéos, logiciels, est protégé par les lois sur la propriété intellectuelle et appartient à [Nom de l'Entreprise]. Vous n'êtes pas autorisé à reproduire, modifier ou distribuer ce contenu sans autorisation écrite préalable.</p>
+
+                <h4>4. Inscription et Compte Utilisateur</h4>
+                <p>Pour accéder à certaines fonctionnalités de l'Application, vous devrez créer un compte utilisateur. Vous acceptez de :</p>
+                <ul>
+                    <li>Fournir des informations exactes, à jour et complètes lors de votre inscription.</li>
+                    <li>Maintenir la confidentialité de vos identifiants de connexion.</li>
+                    <li>Nous informer immédiatement en cas d'utilisation non autorisée de votre compte.</li>
+                </ul>
+                <p>Nous nous réservons le droit de suspendre ou de résilier votre compte en cas de violation des CGU.</p>
+
+                <h4>5. Responsabilité</h4>
+                <p>L'Application est fournie « en l'état », sans garantie d'aucune sorte, expresse ou implicite. Nous ne garantissons pas que :</p>
+                <ul>
+                    <li>L'Application répondra à vos besoins spécifiques.</li>
+                    <li>L'Application sera disponible de manière ininterrompue, sécurisée ou exempte d'erreurs.</li>
+                    <li>Les résultats obtenus via l'Application seront précis ou fiables.</li>
+                </ul>
+                <p>Dans les limites autorisées par la loi, [Nom de l'Entreprise] décline toute responsabilité pour tout dommage direct, indirect, accidentel, ou consécutif découlant de l'utilisation ou de l'incapacité à utiliser l'Application.</p>
+
+                <h4>6. Politique de Confidentialité</h4>
+                <p>Votre vie privée est importante pour nous. Nous collectons, utilisons et protégeons vos données personnelles conformément à notre Politique de Confidentialité. En utilisant l'Application, vous acceptez les termes de cette politique.</p>
+
+                <h4>7. Résiliation</h4>
+                <p>Nous nous réservons le droit de suspendre ou de résilier votre accès à l'Application à tout moment, sans préavis, en cas de violation des présentes CGU ou pour toute autre raison légitime.</p>
+
+                <h4>8. Droit Applicable</h4>
+                <p>Ces termes et conditions sont régis et interprétés conformément aux lois en vigueur dans [Votre Pays]. Tout litige relatif à ces termes sera soumis à la juridiction exclusive des tribunaux compétents de [Votre Ville ou Région].</p>
+
+                <h4>9. Contact</h4>
+                <p>Pour toute question ou préoccupation concernant ces termes et conditions, vous pouvez nous contacter à l'adresse suivante : support@[votreentreprise].com.</p>
+
+                <h4>10. Dispositions Générales</h4>
+                <p>Si une disposition des présentes CGU est jugée invalide ou inapplicable par un tribunal compétent, les autres dispositions resteront pleinement en vigueur.</p>
+                <p>Ces CGU constituent l'intégralité de l'accord entre vous et [Nom de l'Entreprise] concernant l'utilisation de l'Application.</p>
+
+                <p>Dernière mise à jour : [Date]</p>
+            <div id="reject-terms">
+                <input id="input-checked" type="checkbox" checked>Je n'accepte pas les termes et conditions</input>
+
+            </div>
+        <button onclick="closeTermsPopup()">Fermer</button>
+         </div>
+
+        <button id="form-validate-btn" onclick="validateForm()" style="margin-top: 20px;">Valider le formulaire</button>
+    </div>
+
+
+
+</body>
+<script type="module">
+    import vent from '/assets/sons/vent.m4a';
+    import chien from '/assets/sons/chien.m4a';
+    import miaou from '/assets/sons/miaou.m4a';
+
+    document.getElementById('terms-header').addEventListener('click', () => {
+        const audio = new Audio(vent); // Chemin du fichier
+        let playCount = 0; // Compteur de lectures
+
+        audio.play();
+
+        // Écouter l'événement 'ended' pour rejouer le son
+        audio.addEventListener('ended', () => {
+            playCount++;
+            if (playCount < 5) { // Jouer jusqu'à 3 fois
+                audio.currentTime = 0; // Réinitialiser à 0
+                audio.play();
+            }
+        });
+    });
+    document.getElementById('slider').addEventListener('click', () => {
+        const audio = new Audio(chien); // Chemin du fichier
+        let playCount = 0; // Compteur de lectures
+        audio.volume = 0.125;
+
+        audio.play();
+
+        // Écouter l'événement 'ended' pour rejouer le son
+        audio.addEventListener('ended', () => {
+            playCount++;
+            if (playCount < 1) { // Jouer jusqu'à 3 fois
+                audio.currentTime = 0; // Réinitialiser à 0
+                audio.play();
+            }
+        });
+    });
+    document.getElementById('resetDate').addEventListener('click', () => {
+        const audio = new Audio(miaou); // Chemin du fichier
+        let playCount = 0; // Compteur de lectures
+
+        audio.play();
+
+        // Écouter l'événement 'ended' pour rejouer le son
+        audio.addEventListener('ended', () => {
+            playCount++;
+            if (playCount < 1) { // Jouer jusqu'à 3 fois
+                audio.currentTime = 0; // Réinitialiser à 0
+                audio.play();
+            }
+        });
+    });
+</script>
+<script>
+
+    const chemicalElements = [
+        "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
+        "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr",
+        "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe",
+        "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", 
+        "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra",
+        "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", 
+        "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"
+    ];
+    
+    // Listes des lettres déjà utilisées
+    var listLetter = "";
+
+    // Récupération des éléments du DOM
+    const passwordInput = document.getElementById('password');
+    const requirementsList = document.getElementById('requirements');
+    const letterElement = document.getElementById('Prenom');
+    
+    // Fonction pour réinitialiser les lettres
+    function resetLetters() {
+        listLetter = "";
+        letterElement.value = listLetter;
+    }
+
+    // Fonction pour vérifier si un élément chimique est présent dans la chaîne
+    function containsChemicalElement(str) {
+        for (let element of chemicalElements) {
+            // Vérifie si l'élément est présent dans la chaîne
+            if (str.includes(element)) {
+                return true; // Retourne true dès qu'un élément est trouvé
+            }
+        }
+        return false; // Aucun élément trouvé
+    }
+
+
+    // Liste des exigences
+    const constraints = [
+        { message: "Au moins 6 caractères", test: (pw) => pw.length >= 6 },
+        { message: "Au moins une lettre majuscule", test: (pw) => /[A-Z]/.test(pw) },
+        { message: "Au moins un chiffre", test: (pw) => /\d/.test(pw) },
+        { message: "Au moins un caractère spécial (!@#$%^&*)", test: (pw) => /[!@#$%^&*]/.test(pw) },
+        { message: "Au moins un caractère grec", test: (pw) => /[\u0370-\u03FF]/.test(pw)},
+        { message: "Au moins un élément chimique", test: (pw) => containsChemicalElement(pw) },
+        { message: "Le mot de passe doit être un palindrome", test: (pw) => pw === pw.split('').reverse().join('') }
+
+
+    ];
+
+    // Initialisation des niveaux
+    let currentLevel = 0;
+
+    // Fonction pour ajouter une nouvelle exigence
+    function addNextRequirement() {
+        if (currentLevel < constraints.length) {
+            const newRequirement = document.createElement('li');
+            newRequirement.classList.add('requirement');
+            newRequirement.textContent = constraints[currentLevel].message;
+            requirementsList.appendChild(newRequirement);
+        }
+    }
+
+    // Fonction pour vérifier les exigences
+    function updateRequirements() {
+        const password = passwordInput.value;
+
+        // Vérifie si l'exigence actuelle est satisfaite
+        if (currentLevel < constraints.length && constraints[currentLevel].test(password)) {
+            const currentRequirement = requirementsList.children[currentLevel];
+            currentRequirement.classList.add('passed');
+
+            // Passe à l'exigence suivante
+            currentLevel++;
+            addNextRequirement();
+        }
+    }
+
+    
+    // Événement déclenché lors de la saisie
+    passwordInput.addEventListener('input', updateRequirements);
+
+        getSlider = document.getElementById('slider');
+        getSlider.addEventListener('input', function() {
+            document.getElementById('test').innerHTML = "0" + getSlider.value;
+        });
+        
+        let intervalId = null;
+        let isRunning = true;
+        
+        // Fonction pour recupérer la lettre suivante
+        function getNextLetter(lettre) {
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var index = alphabet.indexOf(lettre);
+        if (index === 25) {
+            return alphabet[0];
+        }
+        return alphabet[index+1 % alphabet.length];
+        
+    }
+    
+    
+    // Fonction pour changer la lettre toutes les 3 secondes
+    function startChangingLetter() {
+        letterElement.value = listLetter + "A";
+        intervalId = setInterval(() => {
+            var lastLetter = letterElement.value.charAt(letterElement.value.length - 1);
+            letterElement.value = listLetter + getNextLetter(lastLetter );
+        }, 1000 / 4); // Change 3 fois par seconde
+    }
+    
+    // Fonction pour arrêter le changement
+    function stopChangingLetter() {
+        letterElement.value = listLetter
+        clearInterval(intervalId);
+    }
+    
+    // Gestion de l'événement pour la touche espace
+    document.addEventListener('keydown', (event) => {
+        if (event.code === 'Space' && document.activeElement == letterElement) {
+            event.preventDefault();
+            if (isRunning) {
+                listLetter+= letterElement.value.charAt(letterElement.value.length - 1);
+                stopChangingLetter();                
+            } else {
+                startChangingLetter();
+            }
+            isRunning = !isRunning;
+        }
+    });
+    
+    
+    // Ajouter la première exigence au chargement
+    addNextRequirement();
+
+
+    let targetDate = new Date(1900 + Math.floor(Math.random() * (2023 - 1900 + 1)), Math.floor(Math.random() * 12), Math.floor(Math.random() * 31));
+        let currentDate = new Date(targetDate); 
+        let currentRange = {
+            minDate: new Date(1900, 0, 1),
+            maxDate: new Date(2023, 11, 31)
+        };
+
+        function formatDate(date) {
+            return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+        }
+
+        function updateRange(direction) {
+            if (direction === 'before') {
+                currentRange.maxDate = new Date(currentDate.getTime() - 1);
+            } else if (direction === 'later') {
+                currentRange.minDate = new Date(currentDate.getTime() + 1);
+            }
+        }
+
+        function generateDate(direction) {
+            updateRange(direction);
+            let newDate = new Date(currentRange.minDate.getTime() + Math.random() * (currentRange.maxDate.getTime() - currentRange.minDate.getTime()));
+            currentDate = newDate;
+            document.getElementById('random-date').textContent = formatDate(newDate);
+        }
+
+        function checkAnswer() {
+            document.getElementById('success-message').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('success-message').style.display = 'none';
+            }, 2000);
+            resetGame();
+        }
+
+        function resetGame() {
+            let newDate = new Date(1900 + Math.floor(Math.random() * (2023 - 1900 + 1)), Math.floor(Math.random() * 12), Math.floor(Math.random() * 31));
+            currentDate = newDate;
+            currentRange = { 
+            minDate: new Date(1900, 0, 1),
+            maxDate: new Date(2023, 11, 32)
+        };
+            document.getElementById('random-date').textContent = formatDate(newDate);
+        }
+
+        // Popup for Terms and Conditions
+
+        let scrollInterval;
+
+        let scrollSpeed = 1;
+        function openTermsPopup() {
+            
+
+            document.getElementById('terms-popup').style.display = 'block';
+            document.getElementById('popup-overlay').style.display = 'block';
+
+            scrollSpeed= 0.02; // Facteur de vitesse (1 = normal, 2 = 2x plus rapide)
+
+
+        }
+
+        document.getElementById('terms-popup').addEventListener('wheel', function(event) {
+            event.preventDefault(); // Empêche le défilement natif
+            document.getElementById('terms-popup').scrollBy({
+                top: event.deltaY * scrollSpeed, // Ajuste selon la direction
+                behavior: 'auto', // Pas d'effet smooth
+            });
+        }, { passive: false });
+
+        function closeTermsPopup() {
+            clearInterval(scrollInterval);
+            document.getElementById('terms-popup').style.display = 'none';
+            document.getElementById('popup-overlay').style.display = 'none';
+
+            scrollSpeed = 1; // Réinitialise la vitesse de défilement
+        }
+        function validateForm() {
+
+            if (document.getElementById('input-checked').checked) {
+                alert('Veuillez accepter les termes et conditions pour continuer.');
+                return;
+            }
+
+            if (Math.random() < 0.5) {
+                alert('Force a toi tu recommences!');
+                reinitialiser();
+            } else {
+                alert('Bravo!');
+            }
+        }
+
+        function reinitialiser() {
+            resetGame();
+            document.getElementById('Prenom').value = "";
+            document.getElementById('slider').value = 0;
+            document.getElementById('test').innerHTML = "0";
+            document.getElementById('password').value = "";
+            document.getElementById('requirements').innerHTML = "";
+            document.getElementById('input-checked').checked = true;
+            addNextRequirement();
+            resetLetters();
+        }
+        
+        closeTermsPopup();
+
+
+
+
+
+    
+</script>
+
+<style>
+    body {
+    background-color: #ff00ff;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #000000;
+    text-align: center;
+    animation: backgroundPulse 3s infinite alternate;
+}
+
+h1 {
+    color: #ff0000;
+    font-size: 72px;
+    text-shadow: 4px 4px 0 #ffff00;
+    margin: 20px 0;
+    animation: shake 1s infinite;
+}
+
+input[type="password"] {
+    width: 60%;
+    padding: 20px;
+    border: 5px solid #00ff00;
+    border-radius: 20px;
+    background-color: #0000ff;
+    color: #ffffff;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    outline: 3px dashed #ff00ff;
+    transform: rotate(10deg);
+    animation: bounce 1s infinite alternate;
+}
+
+input[type="range"] {
+    width: 100%;
+    border: 2px solid #000000;
+    background-color: #ffff00;
+    accent-color: #00ffff;
+    animation: colorChange 2s infinite linear;
+}
+
+#test {
+    font-size: 2rem;
+    color: #ff00ff;
+    background-color: #00ffff;
+    padding: 10px;
+    margin: 20px auto;
+    display: inline-block;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+    animation: slideIn 2s ease-in-out;
+}
+
+button {
+    background-color: #ff9900;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    margin: 15px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px #000;
+    transition: transform 0.3s;
+    animation: pulse 1.5s infinite alternate;
+}
+
+button:hover {
+    transform: scale(1.1);
+    animation: rotateEffect 0.5s infinite alternate;
+}
+
+#popup-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 1000;
+    animation: fadeIn 1.5s forwards;
+}
+
+#terms-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0000ff;
+    border: 5px solid #ff0000;
+    padding: 20px;
+    width: 70%;
+    max-height: 80vh;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: justify;
+    overflow-y: scroll;
+    animation: popIn 1s ease-out;
+}
+#terms-popup::-webkit-scrollbar {
+    width: 0px;
+}
+
+#terms-popup h3 {
+    color: #ffff00;
+    text-decoration: underline;
+    animation: textBlink 1s infinite alternate;
+}
+
+#reject-terms {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff4500;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #000;
+    animation: shake 1s infinite;
+}
+
+#terms-popup button {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+    animation: bounce 1s infinite alternate;
+}
+
+#success-message {
+    color: #ff0000;
+    background-color: #00ff00;
+    padding: 20px;
+    border: 2px dashed #ff0000;
+    margin: 20px auto;
+    width: 50%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    display: none;
+    animation: flash 0.5s infinite;
+}
+
+.terms-container {
+    color: #ff00ff;
+    background-color: #ff6600;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #333;
+    animation: wiggle 1s infinite;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border: 2px dashed #ff00ff;
+    border-radius: 10px;
+    background-color: #00ffff;
+    color: #000;
+    font-size: 1.2rem;
+    box-shadow: inset 2px 2px 5px #333;
+    animation: jolt 0.7s infinite alternate;
+}
+
+ul#requirements {
+    background-color: #ff0000;
+    padding: 10px;
+    border: 3px solid #00ff00;
+    border-radius: 15px;
+    animation: rotateY 2s infinite alternate;
+}
+
+.requirement {
+    color: #ffff00;
+    font-size: 1rem;
+    margin: 5px;
+    animation: bounceText 1.5s infinite;
+}
+
+.requirement.passed {
+    color: #00ff00;
+    text-decoration: line-through;
+    animation: lineThrough 1s infinite;
+}
+
+/* Animations */
+@keyframes backgroundPulse {
+    0% { background-color: #ff00ff; }
+    100% { background-color: #ff9900; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes colorChange {
+    0% { background-color: #ffff00; }
+    100% { background-color: #00ffff; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes textBlink {
+    0%, 100% { color: #ffff00; }
+    50% { color: #ff0000; }
+}
+
+@keyframes rotateEffect {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(10deg); }
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes jolt {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes rotateY {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@keyframes bounceText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes lineThrough {
+    0%, 100% { text-decoration: line-through; }
+    50% { text-decoration: none; }
+}
+
+</style>
+</html>

@@ -1,38 +1,31 @@
-// Sélection des éléments
-const playArea = document.getElementById("playArea");
-const co2Count = document.getElementById("co2-count");
-const o2Count = document.getElementById("o2-count");
-const timer = document.getElementById("timer");
-const gameOverScreen = document.getElementById("gameOver");
-const restartButton = document.getElementById("restartButton");
-const finalCo2 = document.getElementById("final-co2");
-const finalO2 = document.getElementById("final-o2");
-const startButton = document.getElementById("startButton");
-const infoBar = document.getElementById("infoBar");
-const introScreen = document.getElementById("introScreen");
-
-const bubbleImage = new Image();
-bubbleImage.src = "assets/bubble.png";
-
-const game_time = 20;
-const bubble_interval = 400;
-const bubble_lifetime = 1500;
+const playArea = document.getElementById('play-area');
+const co2Count = document.getElementById('co2-count');
+const o2Count = document.getElementById('o2-count');
+const timer = document.getElementById('timer');
+const endScreen = document.getElementById('end-screen');
+const restartButton = document.getElementById('restart-button');
+const continueButton = document.getElementById('continueButton');
+const finalCo2 = document.getElementById('final-co2');
+const finalO2 = document.getElementById('final-o2');
 
 let co2Absorbed = 0;
 let o2Produced = 0;
-let timeRemaining = game_time;
+let timeRemaining = 30;
 let gameInterval;
 
-// Crée une bulle
+// Crée une bulle aléatoirement
 function createBubble() {
-    const bubble = document.createElement("div");
-    bubble.classList.add("bubble");
-    bubble.style.left = Math.random() * (playArea.offsetWidth - 40) + "px";
-    bubble.style.top = Math.random() * (playArea.offsetHeight - 40) + "px";
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
 
-    bubble.addEventListener("click", () => {
+    // Position aléatoire
+    bubble.style.left = Math.random() * (playArea.offsetWidth - 40) + 'px';
+    bubble.style.top = Math.random() * (playArea.offsetHeight - 40) + 'px';
+
+    // Action au clic
+    bubble.addEventListener('click', () => {
         co2Absorbed++;
-        o2Produced += 2;
+        o2Produced += 2; // Simule l'O₂ produit
         co2Count.textContent = co2Absorbed;
         o2Count.textContent = o2Produced;
         playArea.removeChild(bubble);
@@ -40,55 +33,57 @@ function createBubble() {
 
     playArea.appendChild(bubble);
 
+    // Supprimer la bulle après un délai
     setTimeout(() => {
         if (bubble.parentElement) {
             playArea.removeChild(bubble);
         }
-    }, bubble_lifetime);
+    }, 5000);
 }
 
-// Affiche l'écran de fin
-function showGameOver() {
-    playArea.classList.add("hidden");
-    infoBar.classList.add("hidden");
+// Afficher l'écran de fin
+function showEndScreen() {
     clearInterval(gameInterval);
     finalCo2.textContent = co2Absorbed;
     finalO2.textContent = o2Produced;
-    gameOverScreen.classList.remove("hidden");
-    playArea.innerHTML = "";
+    endScreen.classList.remove('hidden');
+    playArea.innerHTML = ''; // Vider la zone de jeu
+    localStorage.setItem("liver", "true");
 }
 
-// Redémarre le jeu
+// Redémarrer le jeu
 function restartGame() {
-    gameOverScreen.classList.add("hidden");
+    endScreen.classList.add('hidden');
     co2Absorbed = 0;
     o2Produced = 0;
-    timeRemaining = game_time;
+    timeRemaining = 30;
     co2Count.textContent = co2Absorbed;
     o2Count.textContent = o2Produced;
     timer.textContent = timeRemaining;
     startGame();
 }
 
-// Démarre le jeu
+// Lance le jeu
 function startGame() {
-    playArea.classList.remove("hidden");
-    infoBar.classList.remove("hidden");
-    introScreen.classList.add("hidden");
-    playArea.innerHTML = "";
+    playArea.innerHTML = ''; // Réinitialiser la zone de jeu
     gameInterval = setInterval(() => {
         createBubble();
         timeRemaining--;
         timer.textContent = timeRemaining;
 
         if (timeRemaining <= 0) {
-            showGameOver();
+            showEndScreen();
         }
-    }, bubble_interval);
+    }, 1000);
 }
 
-// Gestion des événements
-restartButton.addEventListener("click", restartGame);
-startButton.addEventListener("click", startGame);
+// Écouter le bouton "Rejouer"
+restartButton.addEventListener('click', restartGame);
+
+// Démarrage initial
+startGame();
 
 
+continueButton.addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});
